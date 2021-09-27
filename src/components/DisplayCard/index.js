@@ -16,21 +16,30 @@ const DisplayCard = ({ list }) => {
   };
 
   return (
-    <div>
+    <div className="main-container">
       {" "}
       <ul>
         {list?.map((student) => (
           <li key={student.id}>
             <ul>
-              <li>
-                <img alt="avatar icon" src={`${student.pic}`} />{" "}
-              </li>
-              <li>{`${student.firstName} ${student.lastName}`}</li>
-              <li>{`Email: ${student.email}`}</li>
-              <li>{`Company: ${student.company}`}</li>
-              <li>{`Skill: ${student.skill}`}</li>
-              <li>{`Average: ${calcAverage(student.grades)}%`}</li>
-              <hr></hr>
+              <div className="card-content">
+                <div>
+                  <li>
+                    <img
+                      className="avatar"
+                      alt="avatar icon"
+                      src={`${student.pic}`}
+                    />{" "}
+                  </li>
+                </div>
+                <div>
+                  <li className="name">{`${student.firstName} ${student.lastName}`}</li>
+                  <li>{`Email: ${student.email}`}</li>
+                  <li>{`Company: ${student.company}`}</li>
+                  <li>{`Skill: ${student.skill}`}</li>
+                  <li>{`Average: ${calcAverage(student.grades)}%`}</li>
+                </div>
+              </div>
             </ul>
           </li>
         ))}
