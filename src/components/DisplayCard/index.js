@@ -9,10 +9,10 @@ const DisplayCard = ({ list }) => {
     let sum = 0;
     for (let i of convertedGrades) {
       sum += i;
-      console.log("i: ", i);
     }
 
-    console.log("con", convertedGrades, sum);
+    const average = sum / convertedGrades.length;
+    return average;
   };
 
   calcAverage();
@@ -30,8 +30,8 @@ const DisplayCard = ({ list }) => {
               <li>{`Email: ${student.email}`}</li>
               <li>{`Company: ${student.company}`}</li>
               <li>{`Skill: ${student.skill}`}</li>
-              {calcAverage(student.id, student.grades)}
-              {/* <li>{`Average: ${student.email}`}</li> */}
+
+              <li>{`Average: ${calcAverage(student.id, student.grades)}%`}</li>
               <hr></hr>
             </ul>
           </li>
