@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { getData } from "../api-utils";
 
 const Main = () => {
-  const [arr, setArr] = useState([]);
+  const [studentList, setStudentList] = useState([]);
 
   useEffect(() => {
     setList();
@@ -10,10 +10,18 @@ const Main = () => {
 
   const setList = async () => {
     const data = await getData();
-    setArr(data);
+    setStudentList(data);
   };
-  console.log("list: ", arr);
-  return <div>hi</div>;
+  console.log("list: ", studentList.students[0].city);
+  return (
+    <div>
+      <ul>
+        {studentList.students?.map((student) => (
+          <li key={student.id}>{student.firstName}</li>
+        ))}
+      </ul>
+    </div>
+  );
 };
 
 export default Main;
