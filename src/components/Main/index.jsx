@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { getData } from "../api-utils";
+import DisplayCard from "../DisplayCard";
 
 const Main = () => {
   const [studentList, setStudentList] = useState([]);
@@ -12,14 +13,10 @@ const Main = () => {
     const data = await getData();
     setStudentList(data);
   };
-  console.log("list: ", studentList.students[0].city);
+  console.log("list: ", studentList.students);
   return (
     <div>
-      <ul>
-        {studentList.students?.map((student) => (
-          <li key={student.id}>{student.firstName}</li>
-        ))}
-      </ul>
+      <DisplayCard list={studentList.students} />
     </div>
   );
 };
