@@ -1,5 +1,5 @@
 const DisplayCard = ({ list }) => {
-  const calcAverage = (id, grades) => {
+  const calcAverage = (grades) => {
     let convertedGrades = [];
 
     for (let grade in grades) {
@@ -15,7 +15,6 @@ const DisplayCard = ({ list }) => {
     return average;
   };
 
-  calcAverage();
   return (
     <div>
       {" "}
@@ -30,8 +29,7 @@ const DisplayCard = ({ list }) => {
               <li>{`Email: ${student.email}`}</li>
               <li>{`Company: ${student.company}`}</li>
               <li>{`Skill: ${student.skill}`}</li>
-
-              <li>{`Average: ${calcAverage(student.id, student.grades)}%`}</li>
+              <li>{`Average: ${calcAverage(student.grades)}%`}</li>
               <hr></hr>
             </ul>
           </li>
