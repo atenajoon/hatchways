@@ -1,10 +1,18 @@
 const DisplayCard = ({ list }) => {
   const calcAverage = (id, grades) => {
     let convertedGrades = [];
+
     for (let grade in grades) {
       convertedGrades.push(Number(grades[grade]));
     }
-    console.log("con", convertedGrades);
+
+    let sum = 0;
+    for (let i of convertedGrades) {
+      sum += i;
+      console.log("i: ", i);
+    }
+
+    console.log("con", convertedGrades, sum);
   };
 
   calcAverage();
