@@ -3,10 +3,16 @@ import { getData } from "../api-utils";
 
 const Main = () => {
   const [arr, setArr] = useState([]);
+
   useEffect(() => {
-    getData();
+    setList();
   }, []);
 
+  const setList = async () => {
+    const data = await getData();
+    setArr(data);
+  };
+  console.log("list: ", arr);
   return <div>hi</div>;
 };
 
