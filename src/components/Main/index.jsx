@@ -13,7 +13,7 @@ const Main = () => {
     const data = await getData();
     setStudentList(data);
   };
-  console.log("list: ", studentList.students);
+
   return (
     <div>
       <DisplayCard list={studentList.students} />
