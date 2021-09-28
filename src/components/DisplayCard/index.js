@@ -15,6 +15,10 @@ const DisplayCard = ({ list }) => {
     return average;
   };
 
+  const getFullName = ({ firstName, lastName }) => {
+    return `${firstName.toUpperCase()} ${lastName.toUpperCase()}`;
+  };
+
   return (
     <div className="main-container">
       {" "}
@@ -33,7 +37,7 @@ const DisplayCard = ({ list }) => {
                   </li>
                 </div>
                 <div>
-                  <li className="name">{`${student.firstName} ${student.lastName}`}</li>
+                  <li className="name">{getFullName(student)}</li>
                   <li>{`Email: ${student.email}`}</li>
                   <li>{`Company: ${student.company}`}</li>
                   <li>{`Skill: ${student.skill}`}</li>

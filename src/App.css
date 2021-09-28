@@ -1,4 +1,12 @@
+html,
+ul,
+li {
+  padding: 0;
+  margin: 0;
+}
+
 .App {
+  height: 100vh;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -9,18 +17,16 @@
   border-radius: 100%;
   padding: 5px;
 }
-li {
+.card-content li {
   list-style: none;
   color: gray;
   font-size: x-small;
   text-align: left;
   padding: 1px 15px;
 }
-li:last-child {
-  margin-bottom: 8px;
-}
+
 li.name {
-  padding-left: 0;
+  padding: 4px 0;
   font-weight: bold;
   color: black;
   font-size: x-large;
@@ -29,13 +35,19 @@ li.name {
   display: flex;
   align-items: center;
   border-bottom: 1px solid rgb(242, 242, 242);
+  padding-bottom: 8px;
 }
 
 .main-container {
   width: 500px;
   height: 300px;
-  overflow: hidden;
+  overflow: auto;
+  margin-top: 10%;
   background-color: white;
   border: 1px solid rgb(225, 224, 224);
   border-radius: 5px;
+  box-shadow: 0.5px 0.5px 1px grey;
+}
+::-webkit-scrollbar {
+  width: 1px;
 }
