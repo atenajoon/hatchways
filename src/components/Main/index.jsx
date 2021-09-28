@@ -15,7 +15,8 @@ const Main = () => {
   };
 
   return (
-    <div>
+    <div className="main-container">
+      <input id="name-input" placeholder="Search by name" />
       <DisplayCard list={studentList.students} />
     </div>
   );

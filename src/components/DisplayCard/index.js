@@ -20,7 +20,7 @@ const DisplayCard = ({ list }) => {
   };
 
   return (
-    <div className="main-container">
+    <div>
       {" "}
       <ul>
         {list?.map((student) => (

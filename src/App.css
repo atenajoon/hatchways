@@ -39,6 +39,8 @@ li.name {
 }
 
 .main-container {
+  display: flex;
+  flex-direction: column;
   width: 500px;
   height: 300px;
   overflow: auto;
@@ -50,4 +52,16 @@ li.name {
 }
 ::-webkit-scrollbar {
   width: 1px;
+}
+/* ///////////// */
+
+textarea,
+input {
+  outline: none;
+}
+#name-input {
+  margin: 8px 4px 0 4px;
+  padding-bottom: 5px;
+  border: none;
+  border-bottom: 1.5px solid rgb(225, 224, 224);
 }
