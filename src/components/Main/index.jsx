@@ -12,15 +12,24 @@ const Main = () => {
 
   const setList = async () => {
     const data = await getData();
-    setStudentList(data);
+    setStudentList(data.students);
   };
 
   const handleChange = (e) => {
     const { value } = e.target;
     setValue(value);
+
+    const filteredList = studentList.filter(
+      (student) =>
+        student.firstName.toLowerCase().includes(value.toLowerCase()) ||
+        student.lastName.toLowerCase().includes(value.toLowerCase())
+    );
+    console.log(value.toLowerCase(), "filtered: ", filteredList);
   };
+
   return (
     <div className="main-container">
+      <p>{value}</p>
       <input
         id="name-input"
         placeholder="Search by name"
@@ -28,7 +37,7 @@ const Main = () => {
         // value={value}
         autoComplete="off"
       />
-      <DisplayCard list={studentList.students} />
+      <DisplayCard list={studentList} />
     </div>
   );
 };
