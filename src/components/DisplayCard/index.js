@@ -19,6 +19,14 @@ const DisplayCard = ({ list }) => {
     return `${firstName.toUpperCase()} ${lastName.toUpperCase()}`;
   };
 
+  const getGrades = (grades) => {
+    let displayGrages = [];
+    for (let i = 0; i < grades.length; i++) {
+      displayGrages.push(`Test${i + 1}: ${grades[i]}%`);
+    }
+    return displayGrages;
+  };
+
   return (
     <div>
       {" "}
@@ -37,11 +45,20 @@ const DisplayCard = ({ list }) => {
                   </li>
                 </div>
                 <div>
-                  <li className="name">{getFullName(student)}</li>
-                  <li>{`Email: ${student.email}`}</li>
-                  <li>{`Company: ${student.company}`}</li>
-                  <li>{`Skill: ${student.skill}`}</li>
-                  <li>{`Average: ${calcAverage(student.grades)}%`}</li>
+                  <div>
+                    <li className="name">{getFullName(student)}</li>
+                    <li>{`Email: ${student.email}`}</li>
+                    <li>{`Company: ${student.company}`}</li>
+                    <li>{`Skill: ${student.skill}`}</li>
+                    <li>{`Average: ${calcAverage(student.grades)}%`}</li>
+                  </div>
+                  <div>
+                    <ul>
+                      {getGrades(student.grades).map((grade) => (
+                        <li>${grade}</li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               </div>
             </ul>
