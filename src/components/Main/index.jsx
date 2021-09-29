@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import { getData } from "../api-utils";
 import DisplayCard from "../DisplayCard";
+import SearchBar from "../SearchBar";
 
 const Main = () => {
   const [mainArray, setMainArray] = useState([]);
   const [studentList, setStudentList] = useState([]);
-  const [value, setValue] = useState("");
 
   useEffect(() => {
     setList();
@@ -17,28 +17,17 @@ const Main = () => {
     setStudentList(data.students);
   };
 
-  const handleChange = (e) => {
-    const { value } = e.target;
-    setValue(value);
-
-    let filteredList = mainArray.filter(
-      (student) =>
-        student.firstName.toLowerCase().includes(value.toLowerCase()) ||
-        student.lastName.toLowerCase().includes(value.toLowerCase())
-    );
+  const handleChange = (filteredList) => {
     setStudentList(filteredList);
-    console.log(value.toLowerCase(), "filtered: ", filteredList);
   };
 
   return (
     <div className="main-container">
-      <p>{value}</p>
-      <input
+      <SearchBar
         id="name-input"
         placeholder="Search by name"
         onChange={handleChange}
-        // value={value}
-        autoComplete="off"
+        dataSource={mainArray}
       />
       <DisplayCard list={studentList} />
     </div>
