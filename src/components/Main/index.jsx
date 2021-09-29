@@ -3,6 +3,7 @@ import { getData } from "../api-utils";
 import DisplayCard from "../DisplayCard";
 
 const Main = () => {
+  const [mainArray, setMainArray] = useState([]);
   const [studentList, setStudentList] = useState([]);
   const [value, setValue] = useState("");
 
@@ -12,6 +13,7 @@ const Main = () => {
 
   const setList = async () => {
     const data = await getData();
+    setMainArray(data.students);
     setStudentList(data.students);
   };
 
@@ -19,11 +21,12 @@ const Main = () => {
     const { value } = e.target;
     setValue(value);
 
-    const filteredList = studentList.filter(
+    let filteredList = mainArray.filter(
       (student) =>
         student.firstName.toLowerCase().includes(value.toLowerCase()) ||
         student.lastName.toLowerCase().includes(value.toLowerCase())
     );
+    setStudentList(filteredList);
     console.log(value.toLowerCase(), "filtered: ", filteredList);
   };
 
