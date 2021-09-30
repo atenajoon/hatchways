@@ -1,6 +1,7 @@
 html,
 ul,
-li {
+li,
+.items {
   padding: 0;
   margin: 0;
 }
@@ -16,8 +17,10 @@ li {
   border: 1px solid #e2e2e2;
   border-radius: 100%;
   padding: 5px;
+  margin-top: 10px;
 }
-.card-content li {
+.card-content li,
+.items {
   list-style: none;
   color: gray;
   font-size: x-small;
@@ -25,7 +28,7 @@ li {
   padding: 1px 15px;
 }
 
-li.name {
+.name {
   padding: 4px 0;
   font-weight: bold;
   color: black;
@@ -33,7 +36,6 @@ li.name {
 }
 .card-content {
   display: flex;
-  align-items: center;
   border-bottom: 1px solid rgb(242, 242, 242);
   padding-bottom: 8px;
 }
@@ -65,7 +67,9 @@ input {
   border: none;
   border-bottom: 1.5px solid rgb(225, 224, 224);
 }
-
+.student-details {
+  margin: 5px 0;
+}
 .toggleView {
   display: none;
 }
@@ -100,4 +104,5 @@ input {
   padding-bottom: 8px;
   border: none;
   border-bottom: 1.5px solid black;
+  color: #dad9d9;
 }

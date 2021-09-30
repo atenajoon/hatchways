@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
-const AddTags = ({ student }) => {
+// should be changed!
+const AddTags = () => {
   const [value, setValue] = useState("");
   const [tags, setTags] = useState([]);
 
@@ -19,7 +20,7 @@ const AddTags = ({ student }) => {
   };
   return (
     <div className="tags-container">
-      <ul>
+      <ul className>
         {tags.map((tag, index) => (
           <li key={index}>{tag}</li>
         ))}

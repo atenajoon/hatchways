@@ -21,7 +21,7 @@ const DisplayCard = ({ list }) => {
   const getGrades = (grades) => {
     let displayGrages = [];
     for (let i = 0; i < grades.length; i++) {
-      displayGrages.push(`Test${i + 1}: ${grades[i]}%`);
+      displayGrages.push(`${grades[i]}%`);
     }
     return displayGrages;
   };
@@ -32,39 +32,44 @@ const DisplayCard = ({ list }) => {
       <ul>
         {list?.map((student) => (
           <li key={student.id}>
-            <ul>
-              <div className="card-content">
-                <div>
-                  <li>
-                    <img
-                      className="avatar"
-                      alt="avatar icon"
-                      src={`${student.pic}`}
-                    />{" "}
-                  </li>
-                </div>
-                <div>
-                  <div>
-                    <div className="flexRow">
-                      <li className="name">{getFullName(student)}</li>
-                      <Button className="toggleBtn" student={student} />
-                    </div>
-                    <li>{`Email: ${student.email}`}</li>
-                    <li>{`Company: ${student.company}`}</li>
-                    <li>{`Skill: ${student.skill}`}</li>
-                    <li>{`Average: ${calcAverage(student.grades)}%`}</li>
-                  </div>
-                  <div id={student.id}>
-                    <ul>
-                      {getGrades(student.grades).map((grade, index) => (
-                        <li key={index}>${grade}</li>
-                      ))}
-                    </ul>
-                  </div>
-                  <AddTags student={student} />
-                </div>
+            <div className="card-content">
+              <div className="items">
+                <img
+                  className="avatar"
+                  alt="avatar icon"
+                  src={`${student.pic}`}
+                />{" "}
               </div>
-            </ul>
+              <div className="items" style={{ width: "100%" }}>
+                <div className="flexRow">
+                  <div className="name">{getFullName(student)}</div>
+                  <Button className="toggleBtn" student={student} />
+                </div>
+                <div className="student-details">
+                  <div>{`Email: ${student.email}`}</div>
+                  <div>{`Company: ${student.company}`}</div>
+                  <div>{`Skill: ${student.skill}`}</div>
+                  <div>{`Average: ${calcAverage(student.grades)}%`}</div>
+                </div>
+
+                <div id={student.id}>
+                  <ul>
+                    {getGrades(student.grades).map((grade, index) => (
+                      <li key={index}>
+                        {/* `Test${i + 1}: ${grades[i]}%` */}
+                        <span
+                          style={{ width: "40px", display: "inline-block" }}
+                        >
+                          Test{index + 1}
+                        </span>
+                        {grade}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <AddTags student={student} />
+              </div>
+            </div>
           </li>
         ))}
       </ul>
