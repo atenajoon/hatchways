@@ -1,3 +1,5 @@
+import Button from "../common/Button";
+
 const DisplayCard = ({ list }) => {
   const calcAverage = (grades) => {
     let convertedGrades = [];
@@ -27,13 +29,6 @@ const DisplayCard = ({ list }) => {
     return displayGrages;
   };
 
-  const handleClick = (student) => {
-    const gradesList = document.getElementById(student.id);
-    gradesList.classList.toggle("toggleView");
-
-    console.log("clicked", student.id);
-  };
-
   return (
     <div>
       {" "}
@@ -55,7 +50,7 @@ const DisplayCard = ({ list }) => {
                   <div>
                     <div className="flexRow">
                       <li className="name">{getFullName(student)}</li>
-                      <button onClick={() => handleClick(student)}>+</button>
+                      <Button student={student} />
                     </div>
                     <li>{`Email: ${student.email}`}</li>
                     <li>{`Company: ${student.company}`}</li>
