@@ -80,3 +80,15 @@ input {
   color: rgb(171, 170, 170);
   font-size: x-large;
 }
+
+.tags-container {
+  text-align: initial;
+  padding-left: 10px;
+}
+
+.add-input {
+  margin: 8px 4px;
+  padding-bottom: 8px;
+  border: none;
+  border-bottom: 1.5px solid black;
+}
