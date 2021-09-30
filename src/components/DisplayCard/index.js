@@ -28,6 +28,9 @@ const DisplayCard = ({ list }) => {
   };
 
   const handleClick = (student) => {
+    const gradesList = document.getElementById(student.id);
+    gradesList.classList.toggle("toggleView");
+
     console.log("clicked", student.id);
   };
 
@@ -59,7 +62,7 @@ const DisplayCard = ({ list }) => {
                     <li>{`Skill: ${student.skill}`}</li>
                     <li>{`Average: ${calcAverage(student.grades)}%`}</li>
                   </div>
-                  <div id="gradesListView">
+                  <div id={student.id}>
                     <ul>
                       {getGrades(student.grades).map((grade, index) => (
                         <li key={index}>${grade}</li>

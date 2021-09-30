@@ -66,10 +66,10 @@ input {
   border-bottom: 1.5px solid rgb(225, 224, 224);
 }
 
-#gradesListView {
+.toggleView {
   display: none;
 }
 .flexRow {
   display: flex;
-  /* j: space-between; */
+  /* justify-content: space-between; */
 }
