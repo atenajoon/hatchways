@@ -71,5 +71,11 @@ input {
 }
 .flexRow {
   display: flex;
-  /* justify-content: space-between; */
+  justify-content: space-between;
+}
+.toggleBtn {
+  border: none;
+  background-color: white;
+  color: rgb(171, 170, 170);
+  font-size: x-large;
 }

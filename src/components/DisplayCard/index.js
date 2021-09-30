@@ -50,7 +50,7 @@ const DisplayCard = ({ list }) => {
                   <div>
                     <div className="flexRow">
                       <li className="name">{getFullName(student)}</li>
-                      <Button student={student} />
+                      <Button className="toggleBtn" student={student} />
                     </div>
                     <li>{`Email: ${student.email}`}</li>
                     <li>{`Company: ${student.company}`}</li>

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 
-const Button = ({ student }) => {
+const Button = ({ student, className }) => {
   const [myIcon, setMyIcon] = useState(faPlus);
 
   console.log(myIcon);
@@ -14,7 +14,7 @@ const Button = ({ student }) => {
   };
 
   return (
-    <button onClick={() => handleClick(student)}>
+    <button className={className} onClick={() => handleClick(student)}>
       <FontAwesomeIcon icon={myIcon} />
     </button>
   );
