@@ -84,8 +84,17 @@ input {
 .tags-container {
   text-align: initial;
   padding-left: 10px;
+  margin-top: 7px;
 }
-
+.tags-container ul {
+  display: flex;
+}
+.tags-container li {
+  background-color: rgb(225, 224, 224);
+  padding: 7px;
+  margin-right: 3px;
+  border-radius: 3px;
+}
 .add-input {
   margin: 8px 4px;
   padding-bottom: 8px;

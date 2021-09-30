@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 const AddTags = ({ student }) => {
   const [value, setValue] = useState("");
-  const [tag, setTag] = useState([]);
+  const [tags, setTags] = useState([]);
 
   const handleInputChange = (e) => {
     const { value } = e.target;
@@ -12,14 +12,19 @@ const AddTags = ({ student }) => {
 
   const handlePressEnter = (e) => {
     if (e.key === "Enter") {
-      let tagList = [...tag, value];
-      setTag(tagList);
-      console.log(tagList);
+      let tagList = [...tags, value];
+      setTags(tagList);
+      setValue("");
     }
   };
   return (
     <div className="tags-container">
-      <div>{tag}</div>
+      <ul>
+        {tags.map((tag, index) => (
+          <li key={index}>{tag}</li>
+        ))}
+      </ul>
+
       <input
         placeholder="Add a tag"
         value={value}
