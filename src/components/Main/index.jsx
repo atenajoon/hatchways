@@ -29,6 +29,12 @@ const Main = () => {
         onChange={handleChange}
         dataSource={mainArray}
       />
+      <SearchBar
+        id="tag-input"
+        placeholder="Search by tags"
+        onChange={handleChange}
+        dataSource={mainArray}
+      />
       <DisplayCard list={studentList} />
     </div>
   );

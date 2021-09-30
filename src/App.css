@@ -59,7 +59,7 @@ textarea,
 input {
   outline: none;
 }
-#name-input {
+.input-box {
   margin: 8px 4px 0 4px;
   padding-bottom: 5px;
   border: none;
@@ -74,6 +74,7 @@ input {
   justify-content: space-between;
 }
 .toggleBtn {
+  /* position the btn at the right hand side */
   border: none;
   background-color: white;
   color: rgb(171, 170, 170);

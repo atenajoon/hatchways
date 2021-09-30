@@ -4,6 +4,8 @@ import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 
 const Button = ({ student, className }) => {
   const [myIcon, setMyIcon] = useState(faPlus);
+  // const [myIcon, setMyIcon] = useState(faMinus);
+  // in fact, make the className be toggleView at first render
 
   console.log(myIcon);
   const handleClick = (student) => {

@@ -1,17 +1,14 @@
+import AddTags from "../AddTags";
 import Button from "../common/Button";
 
 const DisplayCard = ({ list }) => {
   const calcAverage = (grades) => {
     let convertedGrades = [];
 
-    for (let grade in grades) {
-      convertedGrades.push(Number(grades[grade]));
-    }
+    for (let grade in grades) convertedGrades.push(Number(grades[grade]));
 
     let sum = 0;
-    for (let i of convertedGrades) {
-      sum += i;
-    }
+    for (let i of convertedGrades) sum += i;
 
     const average = sum / convertedGrades.length;
     return average;
@@ -64,6 +61,7 @@ const DisplayCard = ({ list }) => {
                       ))}
                     </ul>
                   </div>
+                  <AddTags student={student} />
                 </div>
               </div>
             </ul>
