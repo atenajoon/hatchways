@@ -1,3 +1,10 @@
+:root {
+  --silver: rgb(225, 224, 224);
+  --black: black;
+  --white: white;
+  --gray: gray;
+}
+
 html,
 ul,
 li,
@@ -11,10 +18,10 @@ li,
   text-align: center;
   display: flex;
   justify-content: center;
-  background-color: rgb(233, 232, 232);
+  background-color: var(--silver);
 }
 .avatar {
-  border: 1px solid #e2e2e2;
+  border: 1px solid var(--silver);
   border-radius: 100%;
   padding: 5px;
   margin-top: 10px;
@@ -22,7 +29,7 @@ li,
 .card-content li,
 .items {
   list-style: none;
-  color: gray;
+  color: var(--gray);
   font-size: x-small;
   text-align: left;
   padding: 1px 15px;
@@ -31,12 +38,12 @@ li,
 .name {
   padding: 4px 0;
   font-weight: bold;
-  color: black;
+  color: var(--black);
   font-size: x-large;
 }
 .card-content {
   display: flex;
-  border-bottom: 1px solid rgb(242, 242, 242);
+  border-bottom: 1px solid var(--silver);
   padding-bottom: 8px;
 }
 
@@ -44,11 +51,11 @@ li,
   display: flex;
   flex-direction: column;
   width: 500px;
-  height: 300px;
+  height: 400px;
   overflow: auto;
   margin-top: 10%;
-  background-color: white;
-  border: 1px solid rgb(225, 224, 224);
+  background-color: var(--white);
+  border: 1px solid var(--silver);
   border-radius: 5px;
   box-shadow: 0.5px 0.5px 1px grey;
 }
@@ -62,10 +69,10 @@ input {
   outline: none;
 }
 .input-box {
-  margin: 8px 4px 0 4px;
+  margin: 10px 4px 0 4px;
   padding-bottom: 5px;
   border: none;
-  border-bottom: 1.5px solid rgb(225, 224, 224);
+  border-bottom: 1.5px solid var(--silver);
 }
 .student-details {
   margin: 5px 0;
@@ -77,32 +84,45 @@ input {
   display: flex;
   justify-content: space-between;
 }
-.toggleBtn {
-  /* position the btn at the right hand side */
+.expand-btn {
   border: none;
-  background-color: white;
-  color: rgb(171, 170, 170);
+  background-color: var(--white);
+  color: var(--silver);
   font-size: x-large;
 }
-
+.flexRow {
+  margin-left: -15px;
+}
 .tags-container {
   text-align: initial;
-  padding-left: 10px;
   margin-top: 7px;
 }
 .tags-container ul {
   display: flex;
 }
 .tags-container li {
-  background-color: rgb(225, 224, 224);
+  background-color: var(--silver);
   padding: 7px;
   margin-right: 3px;
   border-radius: 3px;
 }
 .add-input {
-  margin: 8px 4px;
+  margin: 8px 0;
   padding-bottom: 8px;
   border: none;
-  border-bottom: 1.5px solid black;
-  color: #dad9d9;
+  border-bottom: 1.5px solid var(--silver);
+}
+input:focus {
+  border-bottom: 1.5px solid var(--black);
+}
+
+::placeholder {
+  color: var(--black);
+  opacity: 0.35;
+}
+:-ms-input-placeholder {
+  color: var(--black);
+}
+::-ms-input-placeholder {
+  color: var(--black);
 }
