@@ -12,7 +12,9 @@ const AddTags = ({ student }) => {
 
   const handlePressEnter = (e) => {
     if (e.key === "Enter") {
-      console.log("do validate");
+      let tagList = [...tag, value];
+      setTag(tagList);
+      console.log(tagList);
     }
   };
   return (
