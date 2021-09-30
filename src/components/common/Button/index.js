@@ -1,23 +1,14 @@
-import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 
-const Button = ({ student, className }) => {
-  const [myIcon, setMyIcon] = useState(faPlus);
-  // const [myIcon, setMyIcon] = useState(faMinus);
-  // in fact, make the className be toggleView at first render
-
-  console.log(myIcon);
-  const handleClick = (student) => {
-    const gradesList = document.getElementById(student.id);
-    gradesList.classList.toggle("toggleView");
-
-    myIcon === faPlus ? setMyIcon(faMinus) : setMyIcon(faPlus);
-  };
-
+const Button = ({ onClick, className, showGrades }) => {
   return (
-    <button className={className} onClick={() => handleClick(student)}>
-      <FontAwesomeIcon icon={myIcon} />
+    <button className={className} onClick={onClick}>
+      {showGrades ? (
+        <FontAwesomeIcon icon={faMinus} />
+      ) : (
+        <FontAwesomeIcon icon={faPlus} />
+      )}
     </button>
   );
 };

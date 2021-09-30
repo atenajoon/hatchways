@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 
 // should be changed!
-const AddTags = () => {
+const AddTags = ({ student, onTagChange }) => {
   const [value, setValue] = useState("");
+  //   how to set the tags with the studentId?
   const [tags, setTags] = useState([]);
 
   const handleInputChange = (e) => {
@@ -17,7 +18,10 @@ const AddTags = () => {
       setTags(tagList);
       setValue("");
     }
+    // passing the tags up to the Main component to set the new list of students
+    onTagChange(tags);
   };
+
   return (
     <div className="tags-container">
       <ul className>

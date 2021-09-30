@@ -5,7 +5,9 @@ import SearchBar from "../SearchBar";
 
 const Main = () => {
   const [mainArray, setMainArray] = useState([]);
-  const [studentList, setStudentList] = useState([]);
+  const [filteredList, setFilteredList] = useState([]);
+  const [studentList, setStudentList] = useState([]); //use it!
+  const [tags, setTags] = useState("tag1");
 
   useEffect(() => {
     setList();
@@ -14,11 +16,29 @@ const Main = () => {
   const setList = async () => {
     const data = await getData();
     setMainArray(data.students);
-    setStudentList(data.students);
+    // setStudentList(data.students);
+    setFilteredList(data.students);
   };
 
+  // setting the new list of student by every tags status change
+  useEffect(() => {
+    setTagList();
+  }, [tags]);
+
+  const handleTags = (tags) => {
+    console.log(tags);
+    setTags(tags);
+  };
+
+  const setTagList = (tags) => {
+    const studentWTags = [...mainArray, tags];
+    setStudentList(studentWTags);
+  };
+
+  // //////////////////////////////////////////////////////////
   const handleChange = (filteredList) => {
-    setStudentList(filteredList);
+    // setStudentList(filteredList);
+    setFilteredList(filteredList);
   };
 
   return (
@@ -35,7 +55,13 @@ const Main = () => {
         onChange={handleChange}
         dataSource={mainArray}
       />
-      <DisplayCard list={studentList} />
+      {/* <DisplayCard list={studentList} /> */}
+      {/*
+          studentList
+          ? <DisplayCard list={studentList} ... /> 
+          :  <DisplayCard list={filteredList}  ... />
+      */}
+      <DisplayCard list={filteredList} onTagChange={() => handleTags(tags)} />
     </div>
   );
 };

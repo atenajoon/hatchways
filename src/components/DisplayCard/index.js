@@ -1,7 +1,10 @@
+import { useState } from "react";
 import AddTags from "../AddTags";
 import Button from "../common/Button";
 
-const DisplayCard = ({ list }) => {
+const DisplayCard = ({ list, onTagChange }) => {
+  const [showGrades, setShowGrades] = useState(false);
+
   const calcAverage = (grades) => {
     let convertedGrades = [];
 
@@ -26,6 +29,14 @@ const DisplayCard = ({ list }) => {
     return displayGrages;
   };
 
+  const handleExpandClick = (student) => {
+    // how to use student.id to only affect the targeted student card?
+    if (showGrades) {
+      setShowGrades(!showGrades);
+    } else {
+      setShowGrades(true);
+    }
+  };
   return (
     <div>
       {" "}
@@ -43,7 +54,11 @@ const DisplayCard = ({ list }) => {
               <div className="items" style={{ width: "100%" }}>
                 <div className="flexRow">
                   <div className="name">{getFullName(student)}</div>
-                  <Button className="toggleBtn" student={student} />
+                  <Button
+                    className="expand-btn"
+                    onClick={() => handleExpandClick(student)}
+                    showGrades={showGrades}
+                  />
                 </div>
                 <div className="student-details">
                   <div>{`Email: ${student.email}`}</div>
@@ -52,22 +67,23 @@ const DisplayCard = ({ list }) => {
                   <div>{`Average: ${calcAverage(student.grades)}%`}</div>
                 </div>
 
-                <div id={student.id}>
-                  <ul>
-                    {getGrades(student.grades).map((grade, index) => (
-                      <li key={index}>
-                        {/* `Test${i + 1}: ${grades[i]}%` */}
-                        <span
-                          style={{ width: "40px", display: "inline-block" }}
-                        >
-                          Test{index + 1}
-                        </span>
-                        {grade}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <AddTags student={student} />
+                {showGrades ? (
+                  <div id={student.id}>
+                    <ul>
+                      {getGrades(student.grades).map((grade, index) => (
+                        <li key={index}>
+                          <span
+                            style={{ width: "40px", display: "inline-block" }}
+                          >
+                            Test{index + 1}
+                          </span>
+                          {grade}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ) : null}
+                <AddTags student={student} onTagChange={onTagChange} />
               </div>
             </div>
           </li>
