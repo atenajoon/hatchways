@@ -27,6 +27,10 @@ const DisplayCard = ({ list }) => {
     return displayGrages;
   };
 
+  const handleClick = (student) => {
+    console.log("clicked", student.id);
+  };
+
   return (
     <div>
       {" "}
@@ -46,16 +50,19 @@ const DisplayCard = ({ list }) => {
                 </div>
                 <div>
                   <div>
-                    <li className="name">{getFullName(student)}</li>
+                    <div className="flexRow">
+                      <li className="name">{getFullName(student)}</li>
+                      <button onClick={() => handleClick(student)}>+</button>
+                    </div>
                     <li>{`Email: ${student.email}`}</li>
                     <li>{`Company: ${student.company}`}</li>
                     <li>{`Skill: ${student.skill}`}</li>
                     <li>{`Average: ${calcAverage(student.grades)}%`}</li>
                   </div>
-                  <div>
+                  <div id="gradesListView">
                     <ul>
-                      {getGrades(student.grades).map((grade) => (
-                        <li>${grade}</li>
+                      {getGrades(student.grades).map((grade, index) => (
+                        <li key={index}>${grade}</li>
                       ))}
                     </ul>
                   </div>

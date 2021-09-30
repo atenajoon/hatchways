@@ -65,3 +65,11 @@ input {
   border: none;
   border-bottom: 1.5px solid rgb(225, 224, 224);
 }
+
+#gradesListView {
+  display: none;
+}
+.flexRow {
+  display: flex;
+  /* j: space-between; */
+}
