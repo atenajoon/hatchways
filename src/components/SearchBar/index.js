@@ -6,13 +6,22 @@ const SearchBar = ({ id, placeholder, onChange, dataSource }) => {
     if (id === "name-input") {
       filteredList = dataSource.filter(
         (student) =>
-          student.firstName.toLowerCase().includes(value.toLowerCase()) ||
-          student.lastName.toLowerCase().includes(value.toLowerCase())
+          student.firstName
+            .trim()
+            .toLowerCase()
+            .includes(value.trim().toLowerCase()) ||
+          student.lastName
+            .trim()
+            .toLowerCase()
+            .includes(value.trim().toLowerCase())
       );
     } else if (id === "tag-input") {
       filteredList = dataSource.filter(
         (student) =>
-          student.firstName.toLowerCase().includes(value.toLowerCase())
+          student.firstName
+            .trim()
+            .toLowerCase()
+            .includes(value.trim().toLowerCase())
         // student.tag.toLowerCase().includes(value.toLowerCase())
       );
     }
