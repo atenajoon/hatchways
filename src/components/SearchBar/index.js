@@ -1,4 +1,4 @@
-const SearchBar = ({ id, placeholder, onChange, dataSource }) => {
+const SearchBar = ({ id, placeholder, onChange, dataSource, studentList }) => {
   const myHandleChange = (e) => {
     const { value } = e.target;
     let filteredList = [];
@@ -22,7 +22,7 @@ const SearchBar = ({ id, placeholder, onChange, dataSource }) => {
             .trim()
             .toLowerCase()
             .includes(value.trim().toLowerCase())
-        // student.tag.toLowerCase().includes(value.toLowerCase())
+        // .trim().toLowerCase().includes(value.trim().toLowerCase())
       );
     }
 

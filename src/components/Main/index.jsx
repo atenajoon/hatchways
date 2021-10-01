@@ -7,7 +7,7 @@ const Main = () => {
   const [mainArray, setMainArray] = useState([]);
   const [filteredList, setFilteredList] = useState([]);
   const [studentList, setStudentList] = useState([]); //use it!
-  const [tags, setTags] = useState("tag1");
+  // const [tags, setTags] = useState("tag1");
 
   useEffect(() => {
     setList();
@@ -21,19 +21,18 @@ const Main = () => {
   };
 
   // setting the new list of student by every tags status change
-  useEffect(() => {
-    setTagList();
-  }, [tags]);
+  // useEffect(() => {
+  //   setTagList();
+  // }, [tags]);
 
-  const handleTags = (tags) => {
-    console.log(tags);
-    setTags(tags);
+  const handleTags = (newStudentList) => {
+    setStudentList(newStudentList);
   };
 
-  const setTagList = (tags) => {
-    const studentWTags = [...mainArray, tags];
-    setStudentList(studentWTags);
-  };
+  // const setTagList = (tags) => {
+  //   const studentWTags = [...mainArray, tags];
+  //   setStudentList(studentWTags);
+  // };
 
   // //////////////////////////////////////////////////////////
   const handleChange = (filteredList) => {
@@ -54,6 +53,7 @@ const Main = () => {
         placeholder="Search by tags"
         onChange={handleChange}
         dataSource={mainArray}
+        studentList={studentList}
       />
       {/* <DisplayCard list={studentList} /> */}
       {/*
@@ -61,7 +61,7 @@ const Main = () => {
           ? <DisplayCard list={studentList} ... /> 
           :  <DisplayCard list={filteredList}  ... />
       */}
-      <DisplayCard list={filteredList} onTagChange={() => handleTags(tags)} />
+      <DisplayCard list={filteredList} onTagChange={handleTags} />
     </div>
   );
 };

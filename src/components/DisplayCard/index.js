@@ -73,7 +73,7 @@ const DisplayCard = ({ list, onTagChange }) => {
                       {getGrades(student.grades).map((grade, index) => (
                         <li key={index}>
                           <span
-                            style={{ width: "40px", display: "inline-block" }}
+                            style={{ width: "4rem", display: "inline-block" }}
                           >
                             Test{index + 1}
                           </span>
