@@ -1,15 +1,17 @@
 .App {
   text-align: center;
   height: 100vh;
-  display: grid;
+  width: 100vw;
+  display: flex;
   justify-content: center;
-  align-content: center;
+  align-items: center;
+
   background-color: var(--silver);
 }
 
 .main-container {
-  width: 50rem;
-  height: 40rem;
+  width: 70%;
+  height: 70%;
   overflow: auto;
   background-color: var(--white);
   border-right: 1px solid var(--silver);
@@ -24,6 +26,18 @@
   grid-template-areas:
     "inputs"
     "cards";
+}
+@media screen and (min-width: 600px) {
+  .main-container {
+    width: 60%;
+    height: 60%;
+  }
+}
+@media screen and (min-width: 1000px) {
+  .main-container {
+    width: 50%;
+    height: 50%;
+  }
 }
 .searchBars-container {
   display: flex;

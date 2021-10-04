@@ -30,8 +30,19 @@
 /* card's body */
 .card-content {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   border-bottom: 1px solid var(--silver);
   padding-bottom: 0.8rem;
+}
+@media screen and (min-width: 500px) {
+  .card-content {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  .items:nth-of-type(2) {
+    width: 100%;
+  }
 }
 .card-content li,
 .items {
