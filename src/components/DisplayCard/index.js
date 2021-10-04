@@ -2,8 +2,8 @@ import { useState } from "react";
 import AddTags from "../AddTags";
 import Button from "../common/Button";
 
-const DisplayCard = ({ list, onTagChange }) => {
-  const [showGrades, setShowGrades] = useState(false);
+const DisplayCard = ({ list, setChangingId, setTag }) => {
+  const [expandedGrades, setExpandedGrades] = useState(false);
 
   const calcAverage = (grades) => {
     let convertedGrades = [];
@@ -29,17 +29,17 @@ const DisplayCard = ({ list, onTagChange }) => {
     return displayGrages;
   };
 
-  const handleExpandClick = (student) => {
-    // how to use student.id to only affect the targeted student card?
-    if (showGrades) {
-      setShowGrades(!showGrades);
+  const handleExpandClick = () => {
+    // handle it by checking the student id
+    if (expandedGrades) {
+      setExpandedGrades(!expandedGrades);
     } else {
-      setShowGrades(true);
+      setExpandedGrades(true);
     }
   };
+
   return (
     <div>
-      {" "}
       <ul>
         {list?.map((student) => (
           <li key={student.id}>
@@ -49,15 +49,15 @@ const DisplayCard = ({ list, onTagChange }) => {
                   className="avatar"
                   alt="avatar icon"
                   src={`${student.pic}`}
-                />{" "}
+                />
               </div>
               <div className="items" style={{ width: "100%" }}>
-                <div className="flexRow">
-                  <div className="name">{getFullName(student)}</div>
+                <div className="student-name-flex-row">
+                  <div className="student-name">{getFullName(student)}</div>
                   <Button
                     className="expand-btn"
-                    onClick={() => handleExpandClick(student)}
-                    showGrades={showGrades}
+                    onClick={handleExpandClick}
+                    expandedGrades={expandedGrades}
                   />
                 </div>
                 <div className="student-details">
@@ -67,13 +67,13 @@ const DisplayCard = ({ list, onTagChange }) => {
                   <div>{`Average: ${calcAverage(student.grades)}%`}</div>
                 </div>
 
-                {showGrades ? (
+                {expandedGrades ? (
                   <div id={student.id}>
                     <ul>
                       {getGrades(student.grades).map((grade, index) => (
                         <li key={index}>
                           <span
-                            style={{ width: "4rem", display: "inline-block" }}
+                            style={{ width: "40px", display: "inline-block" }}
                           >
                             Test{index + 1}
                           </span>
@@ -83,7 +83,12 @@ const DisplayCard = ({ list, onTagChange }) => {
                     </ul>
                   </div>
                 ) : null}
-                <AddTags student={student} onTagChange={onTagChange} />
+                <AddTags
+                  studentId={student.id}
+                  setChangingId={setChangingId}
+                  tags={student.tags}
+                  setTag={setTag}
+                />
               </div>
             </div>
           </li>

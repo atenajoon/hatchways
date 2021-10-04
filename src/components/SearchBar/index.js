@@ -1,4 +1,4 @@
-const SearchBar = ({ id, placeholder, onChange, dataSource, studentList }) => {
+const SearchBar = ({ id, placeholder, onChange, dataSource }) => {
   const myHandleChange = (e) => {
     const { value } = e.target;
     let filteredList = [];
@@ -7,23 +7,23 @@ const SearchBar = ({ id, placeholder, onChange, dataSource, studentList }) => {
       filteredList = dataSource.filter(
         (student) =>
           student.firstName
-            .trim()
             .toLowerCase()
             .includes(value.trim().toLowerCase()) ||
-          student.lastName
-            .trim()
-            .toLowerCase()
-            .includes(value.trim().toLowerCase())
+          student.lastName.toLowerCase().includes(value.trim().toLowerCase())
       );
     } else if (id === "tag-input") {
-      filteredList = dataSource.filter(
-        (student) =>
-          student.firstName
-            .trim()
-            .toLowerCase()
-            .includes(value.trim().toLowerCase())
-        // .trim().toLowerCase().includes(value.trim().toLowerCase())
-      );
+      filteredList = dataSource.filter((student) => {
+        if (!value.length) return true;
+
+        let hasTag = false;
+        if (student.tags) {
+          student.tags.forEach((tag) => {
+            if (tag.toLowerCase().includes(value.trim().toLowerCase()))
+              hasTag = true;
+          });
+        }
+        return hasTag;
+      });
     }
 
     onChange(filteredList);

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getData } from "../api-utils";
+import { getData } from "../../Utils/api-utils";
 import DisplayCard from "../DisplayCard";
 import SearchBar from "../SearchBar";
 
@@ -48,7 +48,7 @@ const Main = () => {
           dataSource={mainArray}
         />
         <SearchBar
-          className=" input-box"
+          className="input-box"
           id="tag-input"
           placeholder="Search by tags"
           onChange={handleChange}

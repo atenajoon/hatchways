@@ -1,10 +1,10 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 
-const Button = ({ onClick, className, showGrades }) => {
+const Button = ({ onClick, className, expandedGrades }) => {
   return (
     <button className={className} onClick={onClick}>
-      {showGrades ? (
+      {expandedGrades ? (
         <FontAwesomeIcon icon={faMinus} />
       ) : (
         <FontAwesomeIcon icon={faPlus} />
