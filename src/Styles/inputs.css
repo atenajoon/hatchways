@@ -1,0 +1,13 @@
+.input-box {
+  height: 30px;
+  padding-left: 1.5rem;
+  padding-top: 0.5rem;
+  border: none;
+  border-bottom: 1.5px solid var(--silver);
+}
+.add-input {
+  margin: 0.8rem 0;
+  padding-bottom: 0.8rem;
+  border: none;
+  border-bottom: 1.5px solid var(--silver);
+}

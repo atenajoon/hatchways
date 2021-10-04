@@ -1,0 +1,58 @@
+.avatar {
+  border: 1px solid var(--silver);
+  border-radius: 100%;
+  padding: 0.5rem;
+  margin-top: 1rem;
+}
+.expand-btn {
+  border: none;
+  background-color: var(--white);
+  color: var(--silver);
+  font-size: x-large;
+}
+
+/* student's info */
+.student-name {
+  padding: 0.4rem 0;
+  font-weight: bold;
+  color: var(--black);
+  font-size: x-large;
+}
+.student-name-flex-row {
+  display: flex;
+  justify-content: space-between;
+  margin-left: -15px;
+}
+.student-details {
+  margin: 0.5rem 0;
+}
+
+/* card's body */
+.card-content {
+  display: flex;
+  border-bottom: 1px solid var(--silver);
+  padding-bottom: 0.8rem;
+}
+.card-content li,
+.items {
+  list-style: none;
+  color: var(--gray);
+  font-size: x-small;
+  text-align: left;
+  padding: 0.1rem 1.5rem;
+}
+
+/* tags */
+.tags-container {
+  text-align: initial;
+  margin-top: 0.7rem;
+}
+.tags-container ul {
+  display: flex;
+}
+.tags-container li {
+  background-color: var(--silver);
+  padding: 0.7rem;
+  margin-right: 0.3rem;
+  border-radius: 3px;
+}

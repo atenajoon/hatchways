@@ -1,0 +1,37 @@
+.App {
+  text-align: center;
+  height: 100vh;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  background-color: var(--silver);
+}
+
+.main-container {
+  width: 50rem;
+  height: 40rem;
+  overflow: auto;
+  background-color: var(--white);
+  border-right: 1px solid var(--silver);
+  border-left: 1px solid var(--silver);
+  border-bottom: 1px solid var(--silver);
+  border-radius: 5px;
+  box-shadow: 0.5px 0.95px 1px grey;
+  /*  */
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 60px auto;
+  grid-template-areas:
+    "inputs"
+    "cards";
+}
+.searchBars-container {
+  display: flex;
+  flex-direction: column;
+  grid-area: inputs;
+}
+.cards-container {
+  grid-area: cards;
+  padding: 15px 5px 10px;
+  overflow: scroll;
+}
