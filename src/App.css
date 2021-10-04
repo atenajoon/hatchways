@@ -7,6 +7,7 @@
 html {
   font-size: 62.5%;
 }
+body,
 html,
 ul,
 li,
@@ -15,11 +16,15 @@ li,
   margin: 0;
 }
 
+::-webkit-scrollbar {
+  width: 1px;
+}
 .App {
-  height: 100vh;
   text-align: center;
-  display: flex;
+  height: 100vh;
+  display: grid;
   justify-content: center;
+  align-content: center;
   background-color: var(--silver);
 }
 .avatar {
@@ -50,31 +55,43 @@ li,
 }
 
 .main-container {
-  display: flex;
-  flex-direction: column;
   width: 50rem;
   height: 40rem;
   overflow: auto;
-  margin-top: 10rem;
   background-color: var(--white);
-  border: 1px solid var(--silver);
+  border-right: 1px solid var(--silver);
+  border-left: 1px solid var(--silver);
+  border-bottom: 1px solid var(--silver);
   border-radius: 5px;
-  box-shadow: 0.5px 0.5px 1px grey;
+  box-shadow: 0.5px 0.95px 1px grey;
+  /*  */
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 60px auto;
+  grid-template-areas:
+    "inputs"
+    "cards";
 }
-::-webkit-scrollbar {
-  width: 1px;
+.searchBars-container {
+  display: flex;
+  flex-direction: column;
+  grid-area: inputs;
 }
-/* ///////////// */
-
-textarea,
-input {
-  outline: none;
+.cards-container {
+  grid-area: cards;
+  padding: 15px 5px 10px;
+  overflow: scroll;
 }
 .input-box {
-  margin: 1rem 0.4rem 0 0.4rem;
+  height: 30px;
+  padding-left: 1.5rem;
   padding-bottom: 0.5rem;
   border: none;
   border-bottom: 1.5px solid var(--silver);
+}
+textarea,
+input {
+  outline: none;
 }
 .student-details {
   margin: 0.5rem 0;

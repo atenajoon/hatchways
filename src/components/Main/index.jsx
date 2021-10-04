@@ -5,9 +5,9 @@ import SearchBar from "../SearchBar";
 
 const Main = () => {
   const [mainArray, setMainArray] = useState([]);
-  const [filteredList, setFilteredList] = useState([]);
-  const [studentList, setStudentList] = useState([]); //use it!
-  // const [tags, setTags] = useState("tag1");
+  const [studentList, setStudentList] = useState([]);
+  const [tag, setTag] = useState(null);
+  const [changingId, setChangingId] = useState(null);
 
   useEffect(() => {
     setList();
@@ -16,52 +16,53 @@ const Main = () => {
   const setList = async () => {
     const data = await getData();
     setMainArray(data.students);
-    // setStudentList(data.students);
-    setFilteredList(data.students);
+    setStudentList(data.students);
   };
 
-  // setting the new list of student by every tags status change
-  // useEffect(() => {
-  //   setTagList();
-  // }, [tags]);
+  useEffect(() => {
+    if (changingId) {
+      const taggedStdIdx = studentList.findIndex(
+        (std) => std.id === changingId
+      );
+      const _studentList = [...studentList];
+      _studentList[taggedStdIdx].tags = studentList[taggedStdIdx].tags
+        ? [...studentList[taggedStdIdx].tags, tag]
+        : [tag];
+      setStudentList(_studentList);
+    }
+    setChangingId(null);
+  }, [changingId]);
 
-  const handleTags = (newStudentList) => {
-    setStudentList(newStudentList);
-  };
-
-  // const setTagList = (tags) => {
-  //   const studentWTags = [...mainArray, tags];
-  //   setStudentList(studentWTags);
-  // };
-
-  // //////////////////////////////////////////////////////////
   const handleChange = (filteredList) => {
-    // setStudentList(filteredList);
-    setFilteredList(filteredList);
+    setStudentList(filteredList);
   };
 
   return (
     <div className="main-container">
-      <SearchBar
-        id="name-input"
-        placeholder="Search by name"
-        onChange={handleChange}
-        dataSource={mainArray}
-      />
-      <SearchBar
-        id="tag-input"
-        placeholder="Search by tags"
-        onChange={handleChange}
-        dataSource={mainArray}
-        studentList={studentList}
-      />
-      {/* <DisplayCard list={studentList} /> */}
-      {/*
-          studentList
-          ? <DisplayCard list={studentList} ... /> 
-          :  <DisplayCard list={filteredList}  ... />
-      */}
-      <DisplayCard list={filteredList} onTagChange={handleTags} />
+      <div id="id" className="searchBars-container">
+        <SearchBar
+          className="input-box"
+          id="name-input"
+          placeholder="Search by name"
+          onChange={handleChange}
+          dataSource={mainArray}
+        />
+        <SearchBar
+          className=" input-box"
+          id="tag-input"
+          placeholder="Search by tags"
+          onChange={handleChange}
+          dataSource={mainArray}
+        />
+      </div>
+      <div className="cards-container">
+        <DisplayCard
+          list={studentList}
+          setChangingId={setChangingId}
+          setTag={setTag}
+          className="cards-container"
+        />
+      </div>
     </div>
   );
 };
