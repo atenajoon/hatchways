@@ -19,7 +19,7 @@ const AddTags = ({ studentId, setChangingId, tags = [], setTag }) => {
 
   return (
     <div className="tags-container">
-      <ul className>
+      <ul>
         {tags?.map((tag, index) => (
           <li key={index}>{tag}</li>
         ))}

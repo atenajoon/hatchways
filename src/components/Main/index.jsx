@@ -31,7 +31,7 @@ const Main = () => {
       setStudentList(_studentList);
     }
     setChangingId(null);
-  }, [changingId]);
+  }, [changingId, studentList, tag]);
 
   const handleChange = (filteredList) => {
     setStudentList(filteredList);

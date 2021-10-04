@@ -30,12 +30,7 @@ const DisplayCard = ({ list, setChangingId, setTag }) => {
   };
 
   const handleExpandClick = () => {
-    // handle it by checking the student id
-    if (expandedGrades) {
-      setExpandedGrades(!expandedGrades);
-    } else {
-      setExpandedGrades(true);
-    }
+    setExpandedGrades(!expandedGrades);
   };
 
   return (
@@ -51,7 +46,8 @@ const DisplayCard = ({ list, setChangingId, setTag }) => {
                   src={`${student.pic}`}
                 />
               </div>
-              <div className="items" style={{ width: "100%" }}>
+              {/* <div className="items" style={{ width: "100%" }}> */}
+              <div className="items">
                 <div className="student-name-flex-row">
                   <div className="student-name">{getFullName(student)}</div>
                   <Button
