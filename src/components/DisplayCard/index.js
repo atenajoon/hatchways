@@ -46,7 +46,6 @@ const DisplayCard = ({ list, setChangingId, setTag }) => {
                   src={`${student.pic}`}
                 />
               </div>
-              {/* <div className="items" style={{ width: "100%" }}> */}
               <div className="items">
                 <div className="student-name-flex-row">
                   <div className="student-name">{getFullName(student)}</div>
