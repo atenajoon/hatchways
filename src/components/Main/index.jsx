@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { getData } from "../../Utils/api-utils";
-import DisplayCard from "../DisplayCard";
+import DisplayCards from "../DisplayCards";
 import SearchBar from "../SearchBar";
 
 const Main = () => {
@@ -8,10 +8,6 @@ const Main = () => {
   const [studentList, setStudentList] = useState([]);
   const [tag, setTag] = useState(null);
   const [changingId, setChangingId] = useState(null);
-
-  // // 2 states for expanding
-  // const [expandId, setExpandId] = useState(null);
-  // const [expandGrade, setExpandGrade] = useState(false);
 
   useEffect(() => {
     setList();
@@ -60,7 +56,7 @@ const Main = () => {
         />
       </div>
       <div className="cards-container">
-        <DisplayCard
+        <DisplayCards
           list={studentList}
           setChangingId={setChangingId}
           setStudentList={setStudentList}

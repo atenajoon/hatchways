@@ -2,17 +2,11 @@ import AddTags from "../AddTags";
 import GradeList from "../GradeList";
 import StudentInfo from "../StudentInfo";
 
-const CardBody = ({
-  student,
-  setChangingId,
-  setTag,
-  getGrades,
-  calcAverage,
-}) => {
+const CardBody = ({ student, setChangingId, setTag }) => {
   return (
     <div>
-      <StudentInfo student={student} calcAverage={calcAverage} />
-      <GradeList student={student} getGrades={getGrades} />
+      <StudentInfo student={student} />
+      <GradeList student={student} />
       <AddTags
         studentId={student.id}
         setChangingId={setChangingId}
