@@ -1,22 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import AddTags from "../AddTags";
 import Button from "../common/Button";
 
 const DisplayCard = ({ list, setStudentList, setChangingId, setTag }) => {
   const [expandGrade, setExpandGrade] = useState(false);
-  const [gradeId, setGradeId] = useState(null);
-
-  useEffect(() => {
-    if (gradeId) {
-      const expandGradeStdIdx = list.findIndex((std) => std.id === gradeId);
-      const _list = [...list];
-      _list[expandGradeStdIdx].expandGrade = !expandGrade;
-
-      // how to toggle the expangGrade just for the targeted studentId?!
-      setStudentList(_list);
-    }
-    // setGradeId(null);
-  }, [gradeId, expandGrade]);
 
   const calcAverage = (grades) => {
     let convertedGrades = [];
@@ -43,11 +30,15 @@ const DisplayCard = ({ list, setStudentList, setChangingId, setTag }) => {
   };
 
   const handleExpandClick = (studentId) => {
-    setGradeId(studentId);
+    studentId -= 1;
 
-    // const _studentList = [...list];
+    if (list[studentId].expandGrade) {
+      list[studentId].expandGrade = !list[studentId].expandGrade;
+    } else {
+      list[studentId].expandGrade = true;
+    }
 
-    console.log("from DisplayCard", studentId, expandGrade);
+    setExpandGrade(!expandGrade);
   };
 
   return (
@@ -71,7 +62,7 @@ const DisplayCard = ({ list, setStudentList, setChangingId, setTag }) => {
                     studentId={student.id}
                     className="expand-btn"
                     onClick={handleExpandClick}
-                    expandGrade={expandGrade}
+                    expandGrade={student.expandGrade}
                   />
                 </div>
                 <div className="student-details">
@@ -81,7 +72,7 @@ const DisplayCard = ({ list, setStudentList, setChangingId, setTag }) => {
                   <div>{`Average: ${calcAverage(student.grades)}%`}</div>
                 </div>
 
-                {expandGrade ? (
+                {student.expandGrade ? (
                   <div id={student.id}>
                     <ul>
                       {getGrades(student.grades).map((grade, index) => (
