@@ -1,8 +1,8 @@
 import { useState } from "react";
 import CardBody from "../CardBody";
-import Button from "../common/Button";
+import CardHeader from "../CardHeader";
 
-const DisplayCard = ({ list, setStudentList, setChangingId, setTag }) => {
+const DisplayCard = ({ list, setChangingId, setTag }) => {
   const [expandGrade, setExpandGrade] = useState(false);
 
   const calcAverage = (grades) => {
@@ -15,10 +15,6 @@ const DisplayCard = ({ list, setStudentList, setChangingId, setTag }) => {
 
     const average = sum / convertedGrades.length;
     return average;
-  };
-
-  const getFullName = ({ firstName, lastName }) => {
-    return `${firstName.toUpperCase()} ${lastName.toUpperCase()}`;
   };
 
   const getGrades = (grades) => {
@@ -55,17 +51,10 @@ const DisplayCard = ({ list, setStudentList, setChangingId, setTag }) => {
                 />
               </div>
               <div className="items">
-                <div className="student-name-flex-row">
-                  <div className="student-name">{getFullName(student)}</div>
-
-                  <Button
-                    studentId={student.id}
-                    className="expand-btn"
-                    onClick={handleExpandClick}
-                    expandGrade={student.expandGrade}
-                  />
-                </div>
-
+                <CardHeader
+                  student={student}
+                  handleExpandClick={handleExpandClick}
+                />
                 <CardBody
                   student={student}
                   setChangingId={setChangingId}
