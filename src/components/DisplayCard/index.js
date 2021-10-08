@@ -1,5 +1,5 @@
 import { useState } from "react";
-import AddTags from "../AddTags";
+import CardBody from "../CardBody";
 import Button from "../common/Button";
 
 const DisplayCard = ({ list, setStudentList, setChangingId, setTag }) => {
@@ -65,34 +65,13 @@ const DisplayCard = ({ list, setStudentList, setChangingId, setTag }) => {
                     expandGrade={student.expandGrade}
                   />
                 </div>
-                <div className="student-details">
-                  <div>{`Email: ${student.email}`}</div>
-                  <div>{`Company: ${student.company}`}</div>
-                  <div>{`Skill: ${student.skill}`}</div>
-                  <div>{`Average: ${calcAverage(student.grades)}%`}</div>
-                </div>
 
-                {student.expandGrade ? (
-                  <div id={student.id}>
-                    <ul>
-                      {getGrades(student.grades).map((grade, index) => (
-                        <li key={index}>
-                          <span
-                            style={{ width: "40px", display: "inline-block" }}
-                          >
-                            Test{index + 1}
-                          </span>
-                          {grade}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ) : null}
-                <AddTags
-                  studentId={student.id}
+                <CardBody
+                  student={student}
                   setChangingId={setChangingId}
-                  tags={student.tags}
                   setTag={setTag}
+                  getGrades={getGrades}
+                  calcAverage={calcAverage}
                 />
               </div>
             </div>
