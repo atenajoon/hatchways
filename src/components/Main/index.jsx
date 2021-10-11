@@ -3,7 +3,7 @@ import { getData } from "../../Utils/api-utils";
 import DisplayCards from "../DisplayCards";
 import SearchBar from "../SearchBar";
 
-const Main = () => {
+const Main = ({ getTotalResult }) => {
   const [mainArray, setMainArray] = useState([]);
   const [studentList, setStudentList] = useState([]);
   const [tag, setTag] = useState(null);
@@ -21,6 +21,7 @@ const Main = () => {
     const data = await getData();
     setMainArray(data.students);
     setStudentList(data.students);
+    getTotalResult(data.students.length);
   };
 
   useEffect(() => {
@@ -39,6 +40,7 @@ const Main = () => {
 
   const handleChange = (filteredList) => {
     setStudentList(filteredList);
+    getTotalResult(filteredList.length);
   };
 
   return (
