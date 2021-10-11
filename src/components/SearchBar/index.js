@@ -1,101 +1,78 @@
-import { useState } from "react";
-
-const SearchBar = ({ id, placeholder, onChange, dataSource }) => {
-  const [searchedTerm, setSeachedTerm] = useState({
-    searchedName: "",
-    searchedTag: "",
-  });
-
+const SearchBar = ({
+  id,
+  placeholder,
+  onChange,
+  dataSource,
+  searchedTerm,
+  setSearchedTerm,
+}) => {
   const myHandleChange = (e) => {
+    // retrieve the input value
     const { value } = e.target;
+    const lowerCaseValue = value.trim().toLowerCase();
+    // locally updated searchedTerm
+    let updatedSearchedTerm = searchedTerm;
 
-    let filteredList = [];
+    // opt ver
+    const isUpdatingName = id === "name-input"; //true false
+    updatedSearchedTerm = {
+      searchedName: isUpdatingName ? lowerCaseValue : searchedTerm.searchedName,
+      searchedTag: !isUpdatingName ? lowerCaseValue : searchedTerm.searchedTag,
+    };
+    // console.log("updatedSearchedTerm: ", updatedSearchedTerm);
+    setSearchedTerm(updatedSearchedTerm);
+    handleFilter(
+      isUpdatingName ? "name-input" : "tag-input",
+      updatedSearchedTerm,
+      value
+    );
+    // TODO: remove the console.log
+    console.log("updatedSearchedTerm", updatedSearchedTerm);
+  };
 
-    // what's wrong in this logic?
+  const handleFilter = (inputId, updatedSearchedTerm, value) => {
+    const filteredList = dataSource.filter((std) => {
+      // names
+      const stdName = `${std.firstName} ${std.lastName}`;
+      // tags
+      const stdTags = std.tags;
+      // validations
+      let isNameValid;
+      let isTagValid;
+      // check if the input is for name, if not then it's for tag
+      const isNameInput = inputId === "name-input";
 
-    let both;
-    let justName;
-    let justTag;
+      // empty or the string is included to student's name
+      isNameValid =
+        updatedSearchedTerm.searchedName.length === 0
+          ? true
+          : stdName
+              .toLowerCase()
+              .includes(isNameInput ? value : updatedSearchedTerm.searchedName);
+      // empty or the string is included to student's tag
+      isTagValid =
+        updatedSearchedTerm.searchedTag.length === 0
+          ? true
+          : stdTags?.some((tag) =>
+              tag
+                .toLowerCase()
+                .includes(
+                  !isNameInput ? value : updatedSearchedTerm.searchedTag
+                )
+            );
 
-    // set the state to the searched term
-    // but it is not keeping the previous state after rerendering
-    if (id === "name-input")
-      setSeachedTerm({
-        ...searchedTerm,
-        searchedName: value.trim().toLowerCase(),
-      });
-    console.log("SN: ", searchedTerm.searchedName);
-
-    if (id === "tag-input")
-      setSeachedTerm({
-        ...searchedTerm,
-        searchedTag: value.trim().toLowerCase(),
-      });
-    console.log("ST: ", searchedTerm.searchedTag);
-
-    // if both searching inputs are active
-    // this condition never happend since every rerender empties the other one
-    if (searchedTerm.searchedTag !== "" && searchedTerm.searchedName !== "") {
+      // TODO: remove the console.log
       console.log(
-        "searched: ",
-        searchedTerm.searchedName,
-        searchedTerm.searchedTag
+        "isBothValid",
+        isNameValid && isTagValid,
+        isNameValid,
+        isTagValid
       );
-      both = dataSource.filter(
-        (student) =>
-          student.firstName
-            .concat(" ", student.lastName)
-            .trim()
-            .toLowerCase()
-            .includes(searchedTerm.searchedName) &&
-          student.tags?.filter((tag) => tag.includes(searchedTerm.searchedTag)) //doesn't filter by the seachedTag
-      );
-      console.log("both: ", both);
-    }
-    // if only searching by tag:
-    else if (searchedTerm.searchedTag !== "") {
-      justTag = dataSource.filter((student) =>
-        student.tags?.filter((tag) => tag.includes(searchedTerm.searchedTag))
-      );
-      console.log("justTag: ", justTag);
-    }
-    // if only searching by name:
-    else if (searchedTerm.searchedName !== "") {
-      justName = dataSource.filter((student) =>
-        student.firstName
-          .concat(" ", student.lastName)
-          .trim()
-          .toLowerCase()
-          .includes(searchedTerm.searchedName)
-      );
-      console.log("justName: ", justName);
-    }
-
-    // previous loginc, filtered only by one of the inputs!
-    if (id === "name-input") {
-      filteredList = dataSource.filter(
-        (student) =>
-          student.firstName
-            .toLowerCase()
-            .includes(value.trim().toLowerCase()) ||
-          student.lastName.toLowerCase().includes(value.trim().toLowerCase())
-      );
-    } else if (id === "tag-input") {
-      filteredList = dataSource.filter((student) => {
-        if (!value.length) return true;
-
-        let hasTag = false;
-        if (student.tags) {
-          student.tags.forEach((tag) => {
-            if (tag.toLowerCase().includes(value.trim().toLowerCase()))
-              hasTag = true;
-          });
-        }
-        return hasTag;
-      });
-    }
-
-    console.log("filtered: ", filteredList);
+      // is name and tag is valid then return the student(keep it in the list)
+      return isNameValid && isTagValid;
+    });
+    // TODO: remove the console.log
+    console.log("filteredList", filteredList);
     onChange(filteredList);
   };
 
