@@ -28,16 +28,17 @@
     "inputs"
     "cards";
 }
+
 @media screen and (min-width: 600px) {
   .main-container {
     width: 60%;
-    height: 60%;
+    height: 50%;
   }
 }
 @media screen and (min-width: 1000px) {
   .main-container {
     width: 50%;
-    min-height: 70%;
+    min-height: 60%;
   }
 }
 .searchBars-container {
@@ -52,13 +53,14 @@
 }
 #total-result {
   width: 12%;
-  height: 12%;
+  height: 10%;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: white;
   padding: 0 15px;
-  font-size: small;
+  font-size: medium;
+  font-weight: bold;
   color: grey;
   border: 1px solid lightgray;
   border-radius: 8px;

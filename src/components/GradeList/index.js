@@ -1,4 +1,6 @@
 const GradeList = ({ student }) => {
+  let myClass = student.expandGrade ? "" : "none-class";
+
   const getGrades = (grades) => {
     let displayGrages = [];
     for (let i = 0; i < grades.length; i++) {
@@ -8,20 +10,16 @@ const GradeList = ({ student }) => {
   };
   return (
     <div>
-      {student.expandGrade ? (
-        <div id={student.id}>
-          <ul>
-            {getGrades(student.grades).map((grade, index) => (
-              <li key={index}>
-                <span style={{ width: "40px", display: "inline-block" }}>
-                  Test{index + 1}
-                </span>
-                {grade}
-              </li>
-            ))}
-          </ul>
-        </div>
-      ) : null}
+      <div id={student.id} className={myClass}>
+        <ul>
+          {getGrades(student.grades).map((grade, index) => (
+            <li key={index}>
+              <span className="grades-container">Test{index + 1}</span>
+              {grade}
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };

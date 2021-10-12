@@ -67,6 +67,15 @@
   padding: 0.1rem 1.5rem;
 }
 
+/* grades */
+.grades-container {
+  width: 40px;
+  display: inline-block;
+}
+.none-class {
+  display: none;
+}
+
 /* tags */
 .tags-container {
   text-align: initial;

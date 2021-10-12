@@ -12,7 +12,7 @@ function App() {
   return (
     <div className="App">
       <div id="total-result">
-        <h3>{totalResult} Students</h3>
+        <span>{totalResult} Students</span>
       </div>
       <Main getTotalResult={getTotalResult} />
     </div>
