@@ -13,16 +13,14 @@ const Main = ({ getTotalResult }) => {
     searchedTag: "",
   });
 
-  useEffect(() => {
-    setList();
-  }, []);
-
   const setList = async () => {
     const data = await getData();
     setMainArray(data.students);
     setStudentList(data.students);
     getTotalResult(data.students.length);
   };
+
+  setList();
 
   useEffect(() => {
     if (changingId) {
