@@ -1,0 +1,53 @@
+.App {
+  text-align: center;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+
+  background-color: var(--silver);
+}
+
+.main-container {
+  width: 70%;
+  height: 70%;
+  overflow: auto;
+  background-color: var(--white);
+  border-right: 1px solid var(--silver);
+  border-left: 1px solid var(--silver);
+  border-bottom: 1px solid var(--silver);
+  border-radius: 5px;
+  box-shadow: 0.5px 0.95px 1px grey;
+  /*  */
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 60px auto;
+  grid-template-areas:
+    "inputs"
+    "cards";
+}
+
+@media screen and (min-width: 600px) {
+  .main-container {
+    width: 60%;
+    height: 50%;
+  }
+}
+@media screen and (min-width: 1000px) {
+  .main-container {
+    width: 50%;
+    min-height: 60%;
+  }
+}
+.searchBars-container {
+  display: flex;
+  flex-direction: column;
+  grid-area: inputs;
+}
+.cards-container {
+  grid-area: cards;
+  padding: 15px 5px 10px;
+  overflow: scroll;
+}
