@@ -51,17 +51,3 @@
   padding: 15px 5px 10px;
   overflow: scroll;
 }
-#total-result {
-  width: 12%;
-  height: 10%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: white;
-  padding: 0 15px;
-  font-size: medium;
-  font-weight: bold;
-  color: grey;
-  border: 1px solid lightgray;
-  border-radius: 8px;
-}
