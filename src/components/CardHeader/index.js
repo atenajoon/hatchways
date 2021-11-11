@@ -1,3 +1,5 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 import Button from "../common/Button";
 
 const CardHeader = ({ student, handleExpandClick }) => {
@@ -8,12 +10,19 @@ const CardHeader = ({ student, handleExpandClick }) => {
   return (
     <div className="student-name-flex-row">
       <div className="student-name">{getFullName(student)}</div>
-      <Button
-        studentId={student.id}
-        className="expand-btn"
-        onClick={handleExpandClick}
-        expandGrade={student.expandGrade}
-      />
+      {student.expandGrade ? (
+        <Button
+          className="expand-btn"
+          onClick={() => handleExpandClick(student.id)}
+          btnTag={<FontAwesomeIcon icon={faMinus} />}
+        />
+      ) : (
+        <Button
+          className="expand-btn"
+          onClick={() => handleExpandClick(student.id)}
+          btnTag={<FontAwesomeIcon icon={faPlus} />}
+        />
+      )}
     </div>
   );
 };
