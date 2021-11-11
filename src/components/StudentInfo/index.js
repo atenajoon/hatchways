@@ -1,13 +1,14 @@
 const StudentInfo = ({ student }) => {
   const calcAverage = (grades) => {
-    let convertedGrades = [];
-
     let sum = 0;
+    let gradesCount = 0;
+
     for (let grade of grades) {
       sum += Number(grade);
+      gradesCount++;
     }
 
-    const average = sum / convertedGrades.length;
+    const average = sum / gradesCount;
     return average;
   };
   return (
