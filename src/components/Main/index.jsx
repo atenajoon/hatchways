@@ -67,7 +67,6 @@ const Main = () => {
         <DisplayCards
           list={studentList}
           setChangingId={setChangingId}
-          setStudentList={setStudentList}
           setTag={setTag}
           className="cards-container"
         />
