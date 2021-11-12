@@ -3,11 +3,16 @@ import { getData } from "../../Utils/api-utils";
 import DisplayCards from "../DisplayCards";
 import SearchBar from "../SearchBar";
 
+// import { useDispatch } from 'react-redux';
+// import { filterStudents } from '../redux/studentListSlice';
+
 const Main = () => {
   const [mainArray, setMainArray] = useState([]);
   const [studentList, setStudentList] = useState([]);
   const [tag, setTag] = useState(null);
   const [changingId, setChangingId] = useState(null);
+
+  // const dispatch = useDispatch();
 
   useEffect(() => {
     const setList = async () => {
@@ -35,6 +40,7 @@ const Main = () => {
 
   const handleChange = (filteredList) => {
     setStudentList(filteredList);
+    // dispatch(filterStudents({ studentList: filteredList}))
   };
 
   return (

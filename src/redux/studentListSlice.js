@@ -2,7 +2,9 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export const studentListSlice = createSlice({
   name: "studentList",
-  initialState: [],
+  initialState: [
+    // mainArray
+  ],
   reducers: {
     filterStudents: (state, action) => {
       const filteredList = {
