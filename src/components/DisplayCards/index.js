@@ -3,6 +3,8 @@ import StudentCard from "../StudentCard";
 
 const DisplayCards = ({ list, setChangingId, setTag }) => {
   // const list = useSelector((state) => state.studentList);
+  // useSelector() returns the entire state tree that is in the store,
+  // so you can do all the filtering and cool stuff in this function!
 
   return (
     <div>
