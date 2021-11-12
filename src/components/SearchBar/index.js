@@ -1,11 +1,11 @@
-const SearchBar = ({
-  id,
-  placeholder,
-  onChange,
-  dataSource,
-  searchedTerm,
-  setSearchedTerm,
-}) => {
+import { useState } from "react";
+
+const SearchBar = ({ id, placeholder, onChange, dataSource }) => {
+  const [searchedTerm, setSearchedTerm] = useState({
+    searchedName: "",
+    searchedTag: "",
+  });
+
   const myHandleChange = (e) => {
     const { value } = e.target;
     const lowerCaseValue = value.trim().toLowerCase();
