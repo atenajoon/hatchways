@@ -27,9 +27,9 @@ const SearchBar = ({
   };
 
   const handleFilter = (inputId, updatedSearchedTerm, value) => {
-    const filteredList = dataSource.filter((std) => {
-      const stdName = `${std.firstName} ${std.lastName}`;
-      const stdTags = std.tags;
+    const filteredList = dataSource.filter((student) => {
+      const studentName = `${student.firstName} ${student.lastName}`;
+      const studentTags = student.tags;
 
       let isNameValid;
       let isTagValid;
@@ -38,14 +38,14 @@ const SearchBar = ({
       isNameValid =
         updatedSearchedTerm.searchedName.length === 0
           ? true
-          : stdName
+          : studentName
               .toLowerCase()
               .includes(isNameInput ? value : updatedSearchedTerm.searchedName);
 
       isTagValid =
         updatedSearchedTerm.searchedTag.length === 0
           ? true
-          : stdTags?.some((tag) =>
+          : studentTags?.some((tag) =>
               tag
                 .toLowerCase()
                 .includes(
@@ -56,7 +56,7 @@ const SearchBar = ({
       return isNameValid && isTagValid;
     });
 
-    console.log(filteredList.length);
+    console.log("pass this to the App.js!", filteredList.length);
     onChange(filteredList);
   };
 
