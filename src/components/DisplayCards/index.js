@@ -1,6 +1,9 @@
 import StudentCard from "../StudentCard";
+// import { useSelector } from 'react-redux';
 
 const DisplayCards = ({ list, setChangingId, setTag }) => {
+  // const list = useSelector((state) => state.studentList);
+
   return (
     <div>
       <ul>
