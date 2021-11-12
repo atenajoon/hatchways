@@ -9,11 +9,7 @@ const StudentCard = ({ student, list, setChangingId, setTag }) => {
   const handleExpandClick = (studentId) => {
     studentId -= 1;
 
-    if (list[studentId].expandGrade) {
-      list[studentId].expandGrade = !list[studentId].expandGrade;
-    } else {
-      list[studentId].expandGrade = true;
-    }
+    list[studentId].expandGrade = !list[studentId].expandGrade;
 
     setExpandGrade(!expandGrade);
   };

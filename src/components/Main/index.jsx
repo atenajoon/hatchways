@@ -8,10 +8,6 @@ const Main = () => {
   const [studentList, setStudentList] = useState([]);
   const [tag, setTag] = useState(null);
   const [changingId, setChangingId] = useState(null);
-  const [searchedTerm, setSearchedTerm] = useState({
-    searchedName: "",
-    searchedTag: "",
-  });
 
   useEffect(() => {
     const setList = async () => {
@@ -50,8 +46,6 @@ const Main = () => {
           placeholder="Search by name"
           onChange={handleChange}
           dataSource={mainArray}
-          searchedTerm={searchedTerm}
-          setSearchedTerm={setSearchedTerm}
         />
         <SearchBar
           className="input-box"
@@ -59,15 +53,12 @@ const Main = () => {
           placeholder="Search by tags"
           onChange={handleChange}
           dataSource={mainArray}
-          searchedTerm={searchedTerm}
-          setSearchedTerm={setSearchedTerm}
         />
       </div>
       <div className="cards-container">
         <DisplayCards
           list={studentList}
           setChangingId={setChangingId}
-          setStudentList={setStudentList}
           setTag={setTag}
           className="cards-container"
         />
