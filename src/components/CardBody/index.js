@@ -8,9 +8,8 @@ const CardBody = ({ student, setChangingId, setTag }) => {
       <StudentInfo student={student} />
       <GradeList student={student} />
       <AddTags
-        studentId={student.id}
+        student={student}
         setChangingId={setChangingId}
-        tags={student.tags}
         setTag={setTag}
       />
     </div>

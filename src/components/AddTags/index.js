@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 
-const AddTags = ({ studentId, setChangingId, tags = [], setTag }) => {
+const AddTags = ({ student, setChangingId, setTag }) => {
   const [value, setValue] = useState("");
+
+  let tags = student.tags;
 
   const handleInputChange = (e) => {
     const { value } = e.target;
@@ -13,7 +15,7 @@ const AddTags = ({ studentId, setChangingId, tags = [], setTag }) => {
       if (!value.trim().length) return;
       setTag(value.trim());
       setValue("");
-      setChangingId(studentId);
+      setChangingId(student.id);
     }
   };
 
