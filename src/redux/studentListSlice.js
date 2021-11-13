@@ -1,10 +1,16 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { getData } from "../Utils/api-utils";
+
+export const getStudentsAsync = createAsyncThunk(
+  "students/getStudentsAsync",
+  async () => {
+    return await getData();
+  }
+);
 
 export const studentListSlice = createSlice({
   name: "studentList",
-  initialState: [
-    // mainArray
-  ],
+  initialState: [],
   reducers: {
     filterStudents: (state, action) => {
       const filteredList = {
@@ -14,6 +20,11 @@ export const studentListSlice = createSlice({
         // completed: false,
       };
       state.push(filteredList);
+    },
+  },
+  extraReducers: {
+    [getStudentsAsync.fulfilled]: (state, action) => {
+      return action.payload.students;
     },
   },
 });
