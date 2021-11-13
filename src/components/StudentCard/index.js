@@ -1,21 +1,13 @@
-import { useState } from "react";
+import { useDispatch } from "react-redux";
 import Avatar from "../Avatar";
 import CardBody from "../CardBody";
 import CardHeader from "../CardHeader";
+import { addExpandGrade } from "../../redux/studentListSlice";
 
-const StudentCard = ({ student, list, setChangingId, setTag }) => {
-  const [expandGrade, setExpandGrade] = useState(false);
-
+const StudentCard = ({ student, setChangingId, setTag }) => {
+  const dispatch = useDispatch();
   const handleExpandClick = (studentId) => {
-    studentId -= 1;
-
-    list[studentId].expandGrade = !list[studentId].expandGrade;
-
-    // list[studentId].expandGrade
-    //   ? (list[studentId].expandGrade = !list[studentId].expandGrade)
-    //   : (list[studentId].expandGrade = true);
-
-    setExpandGrade(!expandGrade);
+    dispatch(addExpandGrade({ studentId }));
   };
 
   return (

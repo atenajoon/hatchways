@@ -12,6 +12,13 @@ export const studentListSlice = createSlice({
   name: "studentList",
   initialState: [],
   reducers: {
+    addExpandGrade: (state, action) => {
+      const studentId = action.payload.studentId - 1;
+
+      state[studentId].expandGrade
+        ? (state[studentId].expandGrade = !state[studentId].expandGrade)
+        : (state[studentId].expandGrade = true);
+    },
     filterStudents: (state, action) => {
       const filteredList = {
         /* sample data */
@@ -29,5 +36,5 @@ export const studentListSlice = createSlice({
   },
 });
 
-export const { filterStudents } = studentListSlice.actions;
+export const { filterStudents, addExpandGrade } = studentListSlice.actions;
 export default studentListSlice.reducer;
