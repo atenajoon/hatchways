@@ -19,6 +19,13 @@ export const studentListSlice = createSlice({
         ? (state[studentId].expandGrade = !state[studentId].expandGrade)
         : (state[studentId].expandGrade = true);
     },
+    AddATag: (state, action) => {
+      const studentId = action.payload.studentId - 1;
+      if (state[studentId].tags === undefined) {
+        state[studentId].tags = [];
+      }
+      state[studentId].tags.push(action.payload.tag);
+    },
     filterStudents: (state, action) => {
       const filteredList = {
         /* sample data */
@@ -36,5 +43,6 @@ export const studentListSlice = createSlice({
   },
 });
 
-export const { filterStudents, addExpandGrade } = studentListSlice.actions;
+export const { filterStudents, addExpandGrade, AddATag } =
+  studentListSlice.actions;
 export default studentListSlice.reducer;

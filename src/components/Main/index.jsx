@@ -15,20 +15,6 @@ const Main = () => {
     dispatch(getStudentsAsync());
   }, [dispatch]);
 
-  // useEffect(() => {
-  //   if (changingId) {
-  //     const taggedStdIdx = studentList.findIndex(
-  //       (std) => std.id === changingId
-  //     );
-  //     const _studentList = [...studentList];
-  //     _studentList[taggedStdIdx].tags = studentList[taggedStdIdx].tags
-  //       ? [...studentList[taggedStdIdx].tags, tag]
-  //       : [tag];
-  //     setStudentList(_studentList);
-  //   }
-  //   setChangingId(null);
-  // }, [changingId, studentList, tag]);
-
   const handleChange = (filteredList) => {
     // setStudentList(filteredList);
     // dispatch(filterStudents({ studentList: filteredList}))

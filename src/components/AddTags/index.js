@@ -1,8 +1,11 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { AddATag } from "../../redux/studentListSlice";
 
-const AddTags = ({ student, setChangingId, setTag }) => {
+const AddTags = ({ student }) => {
   const [value, setValue] = useState("");
 
+  const dispatch = useDispatch();
   let tags = student.tags;
 
   const handleInputChange = (e) => {
@@ -13,9 +16,8 @@ const AddTags = ({ student, setChangingId, setTag }) => {
   const handlePressEnter = (e) => {
     if (e.key === "Enter") {
       if (!value.trim().length) return;
-      setTag(value.trim());
+      dispatch(AddATag({ studentId: student.id, tag: value.trim() }));
       setValue("");
-      setChangingId(student.id);
     }
   };
 
