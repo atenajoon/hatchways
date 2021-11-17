@@ -1,9 +1,8 @@
 import "./App.css";
 import Main from "./components/Main";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 function App() {
-  // const dispatch = useDispatch();
   const students = useSelector((state) => state.studentList);
 
   return (

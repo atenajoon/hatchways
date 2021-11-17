@@ -1,7 +1,7 @@
 import StudentCard from "../StudentCard";
 // import { useSelector } from 'react-redux';
 
-const DisplayCards = ({ list, setChangingId, setTag }) => {
+const DisplayCards = ({ list }) => {
   // const list = useSelector((state) => state.studentList);
   // useSelector() returns the entire state tree that is in the store,
   // so you can do all the filtering and cool stuff in this function!
@@ -11,12 +11,7 @@ const DisplayCards = ({ list, setChangingId, setTag }) => {
       <ul>
         {list?.map((student) => (
           <li key={student.id}>
-            <StudentCard
-              student={student}
-              list={list}
-              setChangingId={setChangingId}
-              setTag={setTag}
-            />
+            <StudentCard student={student} list={list} />
           </li>
         ))}
       </ul>

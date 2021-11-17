@@ -5,9 +5,6 @@ import SearchBar from "../SearchBar";
 import { getStudentsAsync } from "../../redux/studentListSlice";
 
 const Main = () => {
-  const [tag, setTag] = useState(null);
-  const [changingId, setChangingId] = useState(null);
-
   const dispatch = useDispatch();
   const students = useSelector((state) => state.studentList);
 
@@ -41,12 +38,7 @@ const Main = () => {
         />
       </div>
       <div className="cards-container">
-        <DisplayCards
-          list={students}
-          setChangingId={setChangingId}
-          setTag={setTag}
-          className="cards-container"
-        />
+        <DisplayCards list={students} className="cards-container" />
       </div>
     </div>
   );

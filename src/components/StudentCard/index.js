@@ -4,7 +4,7 @@ import CardBody from "../CardBody";
 import CardHeader from "../CardHeader";
 import { addExpandGrade } from "../../redux/studentListSlice";
 
-const StudentCard = ({ student, setChangingId, setTag }) => {
+const StudentCard = ({ student }) => {
   const dispatch = useDispatch();
   const handleExpandClick = (studentId) => {
     dispatch(addExpandGrade({ studentId }));
@@ -17,11 +17,7 @@ const StudentCard = ({ student, setChangingId, setTag }) => {
       </div>
       <div className="items">
         <CardHeader student={student} handleExpandClick={handleExpandClick} />
-        <CardBody
-          student={student}
-          setChangingId={setChangingId}
-          setTag={setTag}
-        />
+        <CardBody student={student} />
       </div>
     </div>
   );
