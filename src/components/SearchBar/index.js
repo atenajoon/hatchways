@@ -27,42 +27,12 @@ const SearchBar = ({ id, placeholder, onChange, dataSource }) => {
   };
 
   const handleFilter = (inputId, updatedSearchedTerm, value) => {
-    const filteredList = dataSource.filter((student) => {
-      const studentName = `${student.firstName} ${student.lastName}`;
-      const studentTags = student.tags;
+    console.log("passed: ", dataSource, inputId, updatedSearchedTerm, value);
+    dispatch(
+      filterStudents({ dataSource, inputId, updatedSearchedTerm, value })
+    );
 
-      let isNameValid;
-      let isTagValid;
-      const isNameInput = inputId === "name-input";
-
-      isNameValid =
-        updatedSearchedTerm.searchedName.length === 0 // name input field is empty
-          ? true // all names will be valid
-          : studentName // only names that include the term will be valid
-              .toLowerCase()
-              .includes(isNameInput ? value : updatedSearchedTerm.searchedName);
-
-      isTagValid =
-        updatedSearchedTerm.searchedTag.length === 0 // tag input field is empty
-          ? true // all tags will be valid
-          : studentTags?.some(
-              (
-                tag // if tag exist, check if some of them...
-              ) =>
-                tag // only those ones that include the term will be valid
-                  .toLowerCase()
-                  .includes(
-                    !isNameInput ? value : updatedSearchedTerm.searchedTag
-                  )
-            );
-
-      return isNameValid && isTagValid; // return those that have true && true
-    });
-
-    console.log("pass this to the App.js!", filteredList.length);
-    // dispatch(filteredList({ }))
-    dispatch(filterStudents({ filteredList }));
-    onChange(filteredList);
+    // onChange(filteredList);
   };
 
   return (

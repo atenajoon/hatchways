@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import DisplayCards from "../DisplayCards";
 import SearchBar from "../SearchBar";
 import { getStudentsAsync } from "../../redux/studentListSlice";
+// import { filterStudents } from "../../redux/studentListSlice";
 
 const Main = () => {
   const dispatch = useDispatch();
@@ -12,10 +13,10 @@ const Main = () => {
     dispatch(getStudentsAsync());
   }, [dispatch]);
 
-  const handleChange = (filteredList) => {
-    // setStudentList(filteredList);
-    // dispatch(filterStudents({ studentList: filteredList}))
-  };
+  // const handleChange = (filteredList) => {
+  //   // dispatch(filterStudents({ filteredList }));
+  //   // setStudentList(filteredList);
+  // };
 
   return (
     <div className="main-container">
@@ -24,7 +25,7 @@ const Main = () => {
           className="input-box"
           id="name-input"
           placeholder="Search by name"
-          onChange={handleChange}
+          // onChange={handleChange}
           // dataSource={mainArray}
           dataSource={students} // for now!
         />
@@ -32,7 +33,7 @@ const Main = () => {
           className="input-box"
           id="tag-input"
           placeholder="Search by tags"
-          onChange={handleChange}
+          // onChange={handleChange}
           // dataSource={mainArray}
           dataSource={students} // for now!
         />
