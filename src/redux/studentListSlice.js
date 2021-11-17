@@ -28,11 +28,9 @@ export const studentListSlice = createSlice({
     },
     filterStudents: (state, action) => {
       const filteredList = {
-        /* sample data */
-        // id: new Date(),
-        // title: action.payload.title,
-        // completed: false,
+        // bring the filtering logic here
       };
+      // set the state to the filteredList
       state.push(filteredList);
     },
   },
