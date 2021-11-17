@@ -1,10 +1,14 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { filterStudents } from "../../redux/studentListSlice";
 
 const SearchBar = ({ id, placeholder, onChange, dataSource }) => {
   const [searchedTerm, setSearchedTerm] = useState({
     searchedName: "",
     searchedTag: "",
   });
+
+  const dispatch = useDispatch();
 
   const myHandleChange = (e) => {
     const { value } = e.target;
@@ -18,7 +22,7 @@ const SearchBar = ({ id, placeholder, onChange, dataSource }) => {
     };
 
     setSearchedTerm(updatedSearchedTerm);
-    // dispatch(filteredList({ }))
+
     handleFilter(id, updatedSearchedTerm, lowerCaseValue);
   };
 
@@ -56,6 +60,8 @@ const SearchBar = ({ id, placeholder, onChange, dataSource }) => {
     });
 
     console.log("pass this to the App.js!", filteredList.length);
+    // dispatch(filteredList({ }))
+    dispatch(filterStudents({ filteredList }));
     onChange(filteredList);
   };
 

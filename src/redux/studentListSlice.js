@@ -27,9 +27,8 @@ export const studentListSlice = createSlice({
       state[studentId].tags.push(action.payload.tag);
     },
     filterStudents: (state, action) => {
-      const filteredList = {
-        // bring the filtering logic here
-      };
+      // bring the filtering logic here?
+      const filteredList = action.payload.filteredList;
       // set the state to the filteredList
       state.push(filteredList);
     },
