@@ -20,14 +20,14 @@ const Main = () => {
   return (
     <div className="main-container">
       <div id="id" className="searchBars-container">
-        {/* <SearchBar
+        <SearchBar
           className="input-box"
           id="name-input"
           placeholder="Search by name"
           onChange={handleChange}
           // dataSource={mainArray}
           dataSource={students} // for now!
-        /> */}
+        />
         <SearchBar
           className="input-box"
           id="tag-input"
