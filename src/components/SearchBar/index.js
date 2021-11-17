@@ -10,20 +10,15 @@ const SearchBar = ({
     const { value } = e.target;
     const lowerCaseValue = value.trim().toLowerCase();
 
-    let updatedSearchedTerm = searchedTerm;
-    const isUpdatingName = id === "name-input";
-
-    updatedSearchedTerm = {
-      searchedName: isUpdatingName ? lowerCaseValue : searchedTerm.searchedName,
-      searchedTag: !isUpdatingName ? lowerCaseValue : searchedTerm.searchedTag,
+    let updatedSearchedTerm = {
+      searchedName:
+        id === "name-input" ? lowerCaseValue : searchedTerm.searchedName,
+      searchedTag:
+        id !== "name-input" ? lowerCaseValue : searchedTerm.searchedTag,
     };
 
     setSearchedTerm(updatedSearchedTerm);
-    handleFilter(
-      isUpdatingName ? "name-input" : "tag-input",
-      updatedSearchedTerm,
-      value
-    );
+    handleFilter(id, updatedSearchedTerm, value);
   };
 
   const handleFilter = (inputId, updatedSearchedTerm, value) => {
