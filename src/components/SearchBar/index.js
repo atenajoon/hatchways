@@ -19,7 +19,7 @@ const SearchBar = ({ id, placeholder, onChange, dataSource }) => {
 
     setSearchedTerm(updatedSearchedTerm);
     // dispatch(filteredList({ }))
-    handleFilter(id, updatedSearchedTerm, value);
+    handleFilter(id, updatedSearchedTerm, lowerCaseValue);
   };
 
   const handleFilter = (inputId, updatedSearchedTerm, value) => {
