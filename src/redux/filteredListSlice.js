@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export const filteredListSlice = createSlice({
   name: "filteredList",
-  initialState: [], //studentList
+  initialState: [],
   reducer: {
     filtereList: (state, action) => {
       //add the filter logic here

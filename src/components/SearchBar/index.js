@@ -10,6 +10,15 @@ const SearchBar = ({ id, placeholder, onChange, dataSource }) => {
     const { value } = e.target;
     const lowerCaseValue = value.trim().toLowerCase();
 
+    // if (id === "name-input")
+    //   dataSource.filter((student) => {
+    //     const studentName = `${student.firstName} ${student.lastName}`;
+    //     const studentTags = student.tags;
+
+    //     studentName.toLowerCase().includes(lowerCaseValue) &&
+    //       student.tags?.some((tag) => tag.toLowerCase().includes());
+    //   });
+
     let updatedSearchedTerm = {
       searchedName:
         id === "name-input" ? lowerCaseValue : searchedTerm.searchedName,
