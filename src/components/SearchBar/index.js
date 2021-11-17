@@ -27,10 +27,8 @@ const SearchBar = ({ id, placeholder, onChange, dataSource }) => {
   };
 
   const handleFilter = (inputId, updatedSearchedTerm, value) => {
-    console.log("passed: ", dataSource, inputId, updatedSearchedTerm, value);
-    dispatch(
-      filterStudents({ dataSource, inputId, updatedSearchedTerm, value })
-    );
+    console.log("passed: ", inputId, updatedSearchedTerm, value);
+    dispatch(filterStudents({ inputId, updatedSearchedTerm, value }));
 
     // onChange(filteredList);
   };

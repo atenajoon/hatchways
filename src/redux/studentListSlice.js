@@ -28,10 +28,9 @@ export const studentListSlice = createSlice({
     },
     filterStudents: (state, action) => {
       // bring the filtering logic here?
-      const { dataSource, inputId, updatedSearchedTerm, value } =
-        action.payload;
+      const { inputId, updatedSearchedTerm, value } = action.payload;
 
-      const filteredList = dataSource.filter((student) => {
+      return state.filter((student) => {
         const studentName = `${student.firstName} ${student.lastName}`;
         const studentTags = student.tags;
 
@@ -64,7 +63,6 @@ export const studentListSlice = createSlice({
 
         return isNameValid && isTagValid; // return those that have true && true
       });
-      state.push(filteredList);
     },
   },
   extraReducers: {
