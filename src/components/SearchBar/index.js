@@ -18,6 +18,7 @@ const SearchBar = ({ id, placeholder, onChange, dataSource }) => {
     };
 
     setSearchedTerm(updatedSearchedTerm);
+    // dispatch(filteredList({ }))
     handleFilter(id, updatedSearchedTerm, value);
   };
 
@@ -31,24 +32,27 @@ const SearchBar = ({ id, placeholder, onChange, dataSource }) => {
       const isNameInput = inputId === "name-input";
 
       isNameValid =
-        updatedSearchedTerm.searchedName.length === 0
-          ? true
-          : studentName
+        updatedSearchedTerm.searchedName.length === 0 // name input field is empty
+          ? true // all names will be valid
+          : studentName // only names that include the term will be valid
               .toLowerCase()
               .includes(isNameInput ? value : updatedSearchedTerm.searchedName);
 
       isTagValid =
-        updatedSearchedTerm.searchedTag.length === 0
-          ? true
-          : studentTags?.some((tag) =>
-              tag
-                .toLowerCase()
-                .includes(
-                  !isNameInput ? value : updatedSearchedTerm.searchedTag
-                )
+        updatedSearchedTerm.searchedTag.length === 0 // tag input field is empty
+          ? true // all tags will be valid
+          : studentTags?.some(
+              (
+                tag // if tag exist, check if some of them...
+              ) =>
+                tag // only those ones that include the term will be valid
+                  .toLowerCase()
+                  .includes(
+                    !isNameInput ? value : updatedSearchedTerm.searchedTag
+                  )
             );
 
-      return isNameValid && isTagValid;
+      return isNameValid && isTagValid; // return those that have true && true
     });
 
     console.log("pass this to the App.js!", filteredList.length);
