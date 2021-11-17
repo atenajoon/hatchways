@@ -26,13 +26,6 @@ export const studentListSlice = createSlice({
       }
       state[studentId].tags.push(action.payload.tag);
     },
-    filterStudents: (state, action) => {
-      const filteredList = {
-        // bring the filtering logic here
-      };
-      // set the state to the filteredList
-      state.push(filteredList);
-    },
   },
   extraReducers: {
     [getStudentsAsync.fulfilled]: (state, action) => {
@@ -41,6 +34,5 @@ export const studentListSlice = createSlice({
   },
 });
 
-export const { filterStudents, addExpandGrade, addATag } =
-  studentListSlice.actions;
+export const { addExpandGrade, addATag } = studentListSlice.actions;
 export default studentListSlice.reducer;

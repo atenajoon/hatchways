@@ -6,6 +6,7 @@ import { getStudentsAsync } from "../../redux/studentListSlice";
 
 const Main = () => {
   const dispatch = useDispatch();
+  // set the students based on filter state
   const students = useSelector((state) => state.studentList);
 
   useEffect(() => {
@@ -14,7 +15,6 @@ const Main = () => {
 
   const handleChange = (filteredList) => {
     // setStudentList(filteredList);
-    // dispatch(filterStudents({ studentList: filteredList}))
   };
 
   return (
