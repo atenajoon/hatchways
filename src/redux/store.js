@@ -1,10 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import filteredListReducer from "./filteredListSlice";
+import updateInputReducer from "./updateInputSlice";
 import studentListReducer from "./studentListSlice";
 
 export default configureStore({
   reducer: {
     studentList: studentListReducer,
-    filteredList: filteredListReducer,
+    updateInput: updateInputReducer,
   },
 });
