@@ -19,7 +19,7 @@ export const studentListSlice = createSlice({
         ? (state[studentId].expandGrade = !state[studentId].expandGrade)
         : (state[studentId].expandGrade = true);
     },
-    AddATag: (state, action) => {
+    addATag: (state, action) => {
       const studentId = action.payload.studentId - 1;
       if (state[studentId].tags === undefined) {
         state[studentId].tags = [];
@@ -43,6 +43,6 @@ export const studentListSlice = createSlice({
   },
 });
 
-export const { filterStudents, addExpandGrade, AddATag } =
+export const { filterStudents, addExpandGrade, addATag } =
   studentListSlice.actions;
 export default studentListSlice.reducer;

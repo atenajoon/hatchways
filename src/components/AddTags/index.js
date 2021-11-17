@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { AddATag } from "../../redux/studentListSlice";
+import { addATag } from "../../redux/studentListSlice";
 
 const AddTags = ({ student }) => {
   const [value, setValue] = useState("");
@@ -16,7 +16,7 @@ const AddTags = ({ student }) => {
   const handlePressEnter = (e) => {
     if (e.key === "Enter") {
       if (!value.trim().length) return;
-      dispatch(AddATag({ studentId: student.id, tag: value.trim() }));
+      dispatch(addATag({ studentId: student.id, tag: value.trim() }));
       setValue("");
     }
   };
