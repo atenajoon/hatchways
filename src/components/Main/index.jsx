@@ -1,12 +1,11 @@
 import { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import DisplayCards from "../DisplayCards";
 import SearchBar from "../SearchBar";
 import { getStudentsAsync } from "../../redux/studentListSlice";
 
 const Main = () => {
   const dispatch = useDispatch();
-  const students = useSelector((state) => state.studentList);
 
   useEffect(() => {
     dispatch(getStudentsAsync());
