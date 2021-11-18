@@ -32,7 +32,7 @@ const DisplayCards = () => {
       return isNameValid && isTagValid;
     });
   }
-  console.log("2", filteredList);
+  // console.log("2", filteredList);
   return (
     <div>
       <ul>
