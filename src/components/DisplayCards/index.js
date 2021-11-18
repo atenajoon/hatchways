@@ -8,6 +8,7 @@ const DisplayCards = () => {
   );
 
   let filteredList;
+  console.log("1", filteredList);
 
   if (searchedName === "" && searchedTag === "") {
     filteredList = studentListState;
@@ -31,7 +32,7 @@ const DisplayCards = () => {
       return isNameValid && isTagValid;
     });
   }
-
+  console.log("2", filteredList);
   return (
     <div>
       <ul>
