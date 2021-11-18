@@ -7,30 +7,16 @@ const SearchBar = ({ id, placeholder, onChange, dataSource }) => {
 
   const searchedTerm = useSelector((state) => state.updateInput);
 
-  console.log("term: ", searchedTerm);
-  // const [searchedTerm, setSearchedTerm] = useState({
-  //   searchedName: "",
-  //   searchedTag: "",
-  // });
-
-  const myHandleChange = (e) => {
+  const handleInputChange = (e) => {
     const { value } = e.target;
     const lowerCaseValue = value.trim().toLowerCase();
 
     id === "name-input"
-      ? dispatch(updateName({ lowerCaseValue }))
-      : dispatch(updateTag({ lowerCaseValue }));
+      ? dispatch(updateName({ tag: lowerCaseValue }))
+      : dispatch(updateTag({ tag: lowerCaseValue }));
 
-    //   let updatedSearchedTerm = {
-    //     searchedName:
-    //       id === "name-input" ? lowerCaseValue : searchedTerm.searchedName,
-    //     searchedTag:
-    //       id === "tag-input" ? lowerCaseValue : searchedTerm.searchedTag,
-    //   };
-
-    //   setSearchedTerm(updatedSearchedTerm);
     //   // dispatch(filteredList({ }))
-    // handleFilter(id, updatedSearchedTerm, lowerCaseValue);
+    // handleFilter(id, lowerCaseValue);
   };
 
   const handleFilter = (inputId, updatedSearchedTerm, value) => {
@@ -72,7 +58,7 @@ const SearchBar = ({ id, placeholder, onChange, dataSource }) => {
       id={id}
       className="input-box"
       placeholder={placeholder}
-      onChange={myHandleChange}
+      onChange={handleInputChange}
       autoComplete="off"
     />
   );
