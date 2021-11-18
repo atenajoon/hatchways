@@ -10,13 +10,13 @@ const AddTags = ({ student }) => {
 
   const handleInputChange = (e) => {
     const { value } = e.target;
-    setValue(value);
+    setValue(value.trim());
   };
 
   const handlePressEnter = (e) => {
     if (e.key === "Enter") {
       if (!value.trim().length) return;
-      dispatch(addATag({ studentId: student.id, tag: value.trim() }));
+      dispatch(addATag({ studentId: student.id, tag: value }));
       setValue("");
     }
   };
