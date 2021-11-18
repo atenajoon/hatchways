@@ -9,7 +9,7 @@ const Main = () => {
 
   useEffect(() => {
     dispatch(getStudentsAsync());
-  }, [dispatch]);
+  }, []);
 
   return (
     <div className="main-container">
