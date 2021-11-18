@@ -1,5 +1,6 @@
-import StudentCard from "../StudentCard";
 import { useSelector } from "react-redux";
+import { getFullName } from "../../Utils/business-utils";
+import StudentCard from "../StudentCard";
 
 const DisplayCards = () => {
   const studentListState = useSelector((state) => state.studentList);
@@ -14,7 +15,7 @@ const DisplayCards = () => {
     filteredList = studentListState;
   } else {
     filteredList = studentListState.filter((student) => {
-      const studentName = `${student.firstName} ${student.lastName}`;
+      const studentName = getFullName(student);
       const studentTags = student.tags;
 
       let isNameValid =
