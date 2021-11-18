@@ -1,14 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export const updateInputSlice = createSlice({
-  name: "filteredList",
+  name: "updateInput",
   initialState: { searchedName: "", searchedTag: "" },
-  reducer: {
+  reducers: {
     updateName: (state, action) => {
-      state.searchedName = action.payload;
+      state.searchedName = action.payload.tag;
     },
     updateTag: (state, action) => {
-      state.searchedTag = action.payload;
+      state.searchedTag = action.payload.tag;
     },
   },
 });
