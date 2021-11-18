@@ -38,7 +38,7 @@ const Main = () => {
         />
       </div>
       <div className="cards-container">
-        <DisplayCards list={students} className="cards-container" />
+        <DisplayCards />
       </div>
     </div>
   );
