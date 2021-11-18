@@ -1,34 +1,36 @@
-import { useState } from "react";
+// import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { updateName, updateTag } from "../../redux/updateInputSlice";
 
 const SearchBar = ({ id, placeholder, onChange, dataSource }) => {
-  const [searchedTerm, setSearchedTerm] = useState({
-    searchedName: "",
-    searchedTag: "",
-  });
+  const dispatch = useDispatch();
+
+  const searchedTerm = useSelector((state) => state.updateInput);
+
+  console.log("term: ", searchedTerm);
+  // const [searchedTerm, setSearchedTerm] = useState({
+  //   searchedName: "",
+  //   searchedTag: "",
+  // });
 
   const myHandleChange = (e) => {
     const { value } = e.target;
     const lowerCaseValue = value.trim().toLowerCase();
 
-    // if (id === "name-input")
-    //   dataSource.filter((student) => {
-    //     const studentName = `${student.firstName} ${student.lastName}`;
-    //     const studentTags = student.tags;
+    id === "name-input"
+      ? dispatch(updateName({ lowerCaseValue }))
+      : dispatch(updateTag({ lowerCaseValue }));
 
-    //     studentName.toLowerCase().includes(lowerCaseValue) &&
-    //       student.tags?.some((tag) => tag.toLowerCase().includes());
-    //   });
+    //   let updatedSearchedTerm = {
+    //     searchedName:
+    //       id === "name-input" ? lowerCaseValue : searchedTerm.searchedName,
+    //     searchedTag:
+    //       id === "tag-input" ? lowerCaseValue : searchedTerm.searchedTag,
+    //   };
 
-    let updatedSearchedTerm = {
-      searchedName:
-        id === "name-input" ? lowerCaseValue : searchedTerm.searchedName,
-      searchedTag:
-        id === "tag-input" ? lowerCaseValue : searchedTerm.searchedTag,
-    };
-
-    setSearchedTerm(updatedSearchedTerm);
-    // dispatch(filteredList({ }))
-    handleFilter(id, updatedSearchedTerm, lowerCaseValue);
+    //   setSearchedTerm(updatedSearchedTerm);
+    //   // dispatch(filteredList({ }))
+    // handleFilter(id, updatedSearchedTerm, lowerCaseValue);
   };
 
   const handleFilter = (inputId, updatedSearchedTerm, value) => {
