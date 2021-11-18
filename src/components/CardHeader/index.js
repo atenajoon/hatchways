@@ -3,11 +3,9 @@ import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 import Button from "../common/Button";
 import { useDispatch } from "react-redux";
 import { addExpandGrade } from "../../redux/studentListSlice";
+import { getFullName } from "../../Utils/business-utils";
 
 const CardHeader = ({ student }) => {
-  const getFullName = ({ firstName, lastName }) => {
-    return `${firstName.toUpperCase()} ${lastName.toUpperCase()}`;
-  };
   const studentId = student.id;
   const dispatch = useDispatch();
   const handleExpandClick = () => {
@@ -26,7 +24,6 @@ const CardHeader = ({ student }) => {
       ) : (
         <Button
           className="expand-btn"
-          // onClick={handleExpandClick}
           onClick={() => handleExpandClick()}
           btnTag={<FontAwesomeIcon icon={faPlus} />}
         />
