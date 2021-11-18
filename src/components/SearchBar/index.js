@@ -1,10 +1,8 @@
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { updateName, updateTag } from "../../redux/updateInputSlice";
 
 const SearchBar = ({ id, placeholder }) => {
   const dispatch = useDispatch();
-
-  const searchedTerm = useSelector((state) => state.updateInput);
 
   const handleInputChange = (e) => {
     const { value } = e.target;
