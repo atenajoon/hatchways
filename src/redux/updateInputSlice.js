@@ -2,13 +2,16 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export const updateInputSlice = createSlice({
   name: "filteredList",
-  initialState: [],
+  initialState: { searchedName: "", searchedTag: "" },
   reducer: {
-    filtereList: (state, action) => {
-      //add the filter logic here
+    updateName: (state, action) => {
+      state.searchedName = action.payload;
+    },
+    updateTag: (state, action) => {
+      state.searchedTag = action.payload;
     },
   },
 });
 
-export const { filtereList } = updateInputSlice.actions;
+export const { updateName, updateTag } = updateInputSlice.actions;
 export default updateInputSlice.reducer;
