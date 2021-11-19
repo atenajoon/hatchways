@@ -1,21 +1,23 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addATag } from "../../redux/studentListSlice";
 
-const AddTags = ({ student, setChangingId, setTag }) => {
+const AddTags = ({ student }) => {
   const [value, setValue] = useState("");
 
+  const dispatch = useDispatch();
   let tags = student.tags;
 
   const handleInputChange = (e) => {
     const { value } = e.target;
-    setValue(value);
+    setValue(value.trim());
   };
 
   const handlePressEnter = (e) => {
     if (e.key === "Enter") {
       if (!value.trim().length) return;
-      setTag(value.trim());
+      dispatch(addATag({ studentId: student.id, tag: value }));
       setValue("");
-      setChangingId(student.id);
     }
   };
 
