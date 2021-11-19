@@ -1,13 +1,8 @@
+import { getGrades } from "./utils";
+
 const GradeList = ({ student }) => {
   let myClass = student.expandGrade ? "" : "none-class";
 
-  const getGrades = (grades) => {
-    let displayGrages = [];
-    for (let i = 0; i < grades.length; i++) {
-      displayGrages.push(`${grades[i]}%`);
-    }
-    return displayGrages;
-  };
   return (
     <div>
       <div id={student.id} className={myClass}>

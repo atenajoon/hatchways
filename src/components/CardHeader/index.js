@@ -1,19 +1,33 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 import Button from "../common/Button";
+import { useDispatch } from "react-redux";
+import { addExpandGrade } from "../../redux/studentListSlice";
+import { getFullName } from "../../Utils/business-utils";
 
-const CardHeader = ({ student, handleExpandClick }) => {
-  const getFullName = ({ firstName, lastName }) => {
-    return `${firstName.toUpperCase()} ${lastName.toUpperCase()}`;
+const CardHeader = ({ student }) => {
+  const studentId = student.id;
+  const dispatch = useDispatch();
+  const handleExpandClick = () => {
+    dispatch(addExpandGrade({ studentId }));
   };
 
   return (
     <div className="student-name-flex-row">
       <div className="student-name">{getFullName(student)}</div>
-      <Button
-        studentId={student.id}
-        className="expand-btn"
-        onClick={handleExpandClick}
-        expandGrade={student.expandGrade}
-      />
+      {student.expandGrade ? (
+        <Button
+          className="expand-btn"
+          onClick={() => handleExpandClick()}
+          btnTag={<FontAwesomeIcon icon={faMinus} />}
+        />
+      ) : (
+        <Button
+          className="expand-btn"
+          onClick={() => handleExpandClick()}
+          btnTag={<FontAwesomeIcon icon={faPlus} />}
+        />
+      )}
     </div>
   );
 };
