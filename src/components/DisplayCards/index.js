@@ -7,7 +7,7 @@ const DisplayCards = () => {
   const { searchedName, searchedTag } = useSelector(
     (state) => state.updateInput
   );
-
+  // read about react.memo and use it to prevent rerendering for shallow changes!
   const filteredList = getStudentList(
     studentListState,
     searchedName,
