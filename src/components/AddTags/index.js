@@ -40,4 +40,4 @@ const AddTags = ({ student }) => {
   );
 };
 
-export default AddTags;
+export default React.memo(AddTags);
