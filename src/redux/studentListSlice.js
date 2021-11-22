@@ -13,18 +13,18 @@ export const studentListSlice = createSlice({
   initialState: [],
   reducers: {
     addExpandGrade: (state, action) => {
-      const studentId = action.payload.studentId - 1;
+      const studentIdx = action.payload.studentId - 1;
 
-      state[studentId].expandGrade
-        ? (state[studentId].expandGrade = !state[studentId].expandGrade)
-        : (state[studentId].expandGrade = true);
+      state[studentIdx].expandGrade
+        ? (state[studentIdx].expandGrade = !state[studentIdx].expandGrade)
+        : (state[studentIdx].expandGrade = true);
     },
     addATag: (state, action) => {
-      const studentId = action.payload.studentId - 1;
-      if (state[studentId].tags === undefined) {
-        state[studentId].tags = [];
+      const studentIdx = action.payload.studentId - 1;
+      if (state[studentIdx].tags === undefined) {
+        state[studentIdx].tags = [];
       }
-      state[studentId].tags.push(action.payload.tag);
+      state[studentIdx].tags.push(action.payload.tag);
     },
   },
   extraReducers: {
