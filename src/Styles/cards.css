@@ -19,9 +19,10 @@
   font-size: x-large;
 }
 .student-name-flex-row {
+  min-width: 25rem;
   display: flex;
   justify-content: space-between;
-  margin-left: -15px;
+  margin-top: 1rem;
 }
 .student-details {
   margin: 0.5rem 0;
