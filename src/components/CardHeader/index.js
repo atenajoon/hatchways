@@ -3,7 +3,7 @@ import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 import Button from "../common/Button";
 import { useDispatch } from "react-redux";
 import { addExpandGrade } from "../../redux/studentListSlice";
-import { getFullName } from "../../Utils/business-utils";
+import { getFullName } from "../../utils/business-utils";
 
 const CardHeader = ({ student }) => {
   const studentId = student.id;
