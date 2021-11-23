@@ -26,7 +26,11 @@ input:focus {
   color: var(--black);
   opacity: 0.35;
 }
-
 ::-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: var(--black);
+}
+::-webkit-input-placeholder {
+  /* Edge */
   color: var(--black);
 }
