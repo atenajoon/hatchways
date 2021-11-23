@@ -1,5 +1,6 @@
 import "./App.css";
 import Main from "./components/Main";
+import TotalStudents from "./components/TotalStudents";
 // import { useSelector } from "react-redux";
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
       {/* <div id="total-result">
         <span>{students.length} Students</span>
       </div> */}
+      <TotalStudents />
       <Main />
     </div>
   );
