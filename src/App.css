@@ -1,7 +1,7 @@
-@import url("../src/Styles/layout.css");
-@import url("../src/Styles/normalize.css");
-@import url("../src/Styles/inputs.css");
-@import url("../src/Styles/cards.css");
+@import url("../src/styles/layout.css");
+@import url("../src/styles/normalize.css");
+@import url("../src/styles/inputs.css");
+@import url("../src/styles/cards.css");
 
 :root {
   --silver: rgb(225, 224, 224);
