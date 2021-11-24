@@ -9,8 +9,8 @@ const SearchBar = ({ id, placeholder }) => {
     const lowerCaseValue = value.trim().toLowerCase();
 
     id === "name-input"
-      ? dispatch(updateName({ tag: lowerCaseValue }))
-      : dispatch(updateTag({ tag: lowerCaseValue }));
+      ? dispatch(updateName({ val: lowerCaseValue }))
+      : dispatch(updateTag({ val: lowerCaseValue }));
   };
 
   return (

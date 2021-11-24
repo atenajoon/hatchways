@@ -5,10 +5,10 @@ export const updateInputSlice = createSlice({
   initialState: { searchedName: "", searchedTag: "" },
   reducers: {
     updateName: (state, action) => {
-      state.searchedName = action.payload.tag;
+      state.searchedName = action.payload.val;
     },
     updateTag: (state, action) => {
-      state.searchedTag = action.payload.tag;
+      state.searchedTag = action.payload.val;
     },
   },
 });
