@@ -5,7 +5,6 @@ export const totalStudentsSlice = createSlice({
   initialState: { total: 0 },
   reducers: {
     displayTotalStudents: (state, action) => {
-      console.log("total", action.payload.total);
       state.total = action.payload.total;
     },
   },
