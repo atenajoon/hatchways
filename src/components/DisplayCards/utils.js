@@ -1,4 +1,4 @@
-import { getFullName } from "../../myU/business-utils";
+import { getFullName } from "../../utils/business-utils";
 
 export const getStudentList = (studentListState, searchedName, searchedTag) => {
   if (searchedName === "" && searchedTag === "") {
