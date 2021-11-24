@@ -15,7 +15,7 @@ const DisplayCards = () => {
     searchedName,
     searchedTag
   );
-
+  // test commit
   useEffect(() => {
     dispatch(displayTotalStudents({ total: filteredList.length }));
   }, [dispatch, filteredList]);
